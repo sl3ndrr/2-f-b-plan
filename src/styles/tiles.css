@@ -115,3 +115,8 @@
   align-items: center;
   margin-bottom: 12px;
 }
+
+.tile-remaining {
+  color: var(--mut);
+  font-size: 0.75rem;
+}

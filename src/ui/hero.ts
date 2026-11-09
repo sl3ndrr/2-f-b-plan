@@ -13,6 +13,8 @@ export function createHero(data: Data, parent: HTMLElement) {
   const target = element('small');
   big.append(count, target);
   const status = element('div', 'hr');
+  status.setAttribute('aria-live', 'polite');
+  status.setAttribute('aria-atomic', 'true');
   header.append(big, status);
 
   const wave = createOscilloscope();
@@ -31,27 +33,18 @@ export function createHero(data: Data, parent: HTMLElement) {
   hero.append(header, wave.node, stack, legend);
   parent.append(hero);
 
-  let frame = 0;
+  let lastTotal = -1;
   function update({ categories, total }: Progress) {
-    const from = Number(count.textContent);
-    const start = performance.now();
-    cancelAnimationFrame(frame);
-    const draw = (now: number) => {
-      const fraction = Math.min(1, (now - start) / 800);
-      count.textContent = String(
-        Math.round(from + (total.capped - from) * (1 - (1 - fraction) ** 3)),
-      );
-      if (fraction < 1) frame = requestAnimationFrame(draw);
-    };
-    if (matchMedia('(prefers-reduced-motion: reduce)').matches)
+    if (lastTotal !== total.capped) {
       count.textContent = String(total.capped);
-    else frame = requestAnimationFrame(draw);
-    target.textContent = `/ ${total.required} C`;
-    status.replaceChildren(
-      `${total.percent}% kompiliert`,
-      element('br'),
-      `noch ${total.remaining} C offen`,
-    );
+      target.textContent = `/ ${total.required} C`;
+      status.replaceChildren(
+        `${total.capped} / ${total.required} C · ${total.percent}% kompiliert`,
+        element('br'),
+        `noch ${total.remaining} C offen`,
+      );
+      lastTotal = total.capped;
+    }
     for (const { id, segment, value } of parts) {
       segment.style.width = `${(categories[id].capped / total.required) * 100}%`;
       value.textContent = String(categories[id].capped);

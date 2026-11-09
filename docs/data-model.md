@@ -17,3 +17,5 @@ Die Reihenfolge in Kategorien, Gruppen und Modulen bestimmt die Anzeige. `offere
 - `i1605` steht im Plan, `i1206` ist eine Alternative im Alle-Modus. Beide gehören zur exklusiven Gruppe `db`.
 
 Die JSON-Schemas beschreiben erlaubte Werte. TypeScript-Verträge liegen in `src/domain/types.ts`. Der Vite-Datenloader gibt erst nach erfolgreicher Schema-Prüfung einen typisierten Datensatz an die Anwendung weiter.
+
+Gruppenzähler beziehen sich auf die aktive Kategorie, unabhängig von Such- und Statusfiltern. Im Plan bilden die ausgewählten Module das Soll. Im Alle-Modus zählt bei einer Exklusivgruppe eine Option. Bei Informatik-Wahlmodulen ist nur das Credit-Soll festgelegt. Der Modulzähler nennt daher die Anzahl verfügbarer Optionen.

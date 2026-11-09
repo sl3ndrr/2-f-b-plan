@@ -50,10 +50,20 @@ function render(state: ReturnType<typeof store.get>, previous?: typeof state) {
   tiles(status, state.filter.category);
   checklist(status);
   toolbar(state);
-  if (!previous || state.mode !== previous.mode || state.filter !== previous.filter) {
-    list.render(state, !previous || state.filter.query === previous.filter.query);
+  if (
+    !previous ||
+    state.mode !== previous.mode ||
+    state.filter !== previous.filter ||
+    (state.done !== previous.done && state.filter.status !== 'all')
+  ) {
+    list.render(
+      state,
+      status,
+      !previous ||
+        (state.filter !== previous.filter && state.filter.query === previous.filter.query),
+    );
   } else {
-    list.sync(state);
+    list.sync(state, status);
   }
 }
 

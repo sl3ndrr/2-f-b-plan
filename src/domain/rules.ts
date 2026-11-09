@@ -27,12 +27,15 @@ export function toggleModule(data: Data, selection: Selection, id: string) {
   return next;
 }
 
+export function exclusiveChoice(modules: Module[], plan: string[], done: ReadonlySet<string>) {
+  return modules.find(({ id }) => done.has(id)) ?? modules.find(({ id }) => plan.includes(id));
+}
+
 export function electiveNeed(data: Data, selection: Selection) {
   const required = data.categories.find(({ id }) => id === 'inf')?.required ?? 0;
-  const mandatory = data.modules.filter(({ group }) => group === 'pf' || group === 'sp');
-  const databases = activeModules(data, selection.mode).filter(({ group }) => group === 'db');
-  const database =
-    databases.find(({ id }) => selection.done.has(id)) ??
-    databases.find(({ id }) => data.plan.includes(id));
+  const active = activeModules(data, selection.mode);
+  const mandatory = active.filter(({ group }) => group === 'pf' || group === 'sp');
+  const databases = active.filter(({ group }) => group === 'db');
+  const database = exclusiveChoice(databases, data.plan, selection.done);
   return Math.max(0, required - sumCredits(mandatory, 'inf') - (database?.credits.inf ?? 0));
 }

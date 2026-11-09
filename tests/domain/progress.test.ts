@@ -57,3 +57,31 @@ test('Migration behält bekannte IDs und verwirft fremde IDs', () => {
   const selection = loadSelection(storage, new Set(data.modules.map(({ id }) => id)));
   assert.deepEqual(selection, { mode: 'all', done: new Set(['p1301', 'i1605']), unknown: ['xyz'] });
 });
+
+test('Gruppenzähler im Plan summieren nur die Credit-Anteile der aktiven Kategorie', () => {
+  const { groups } = progress(data, { mode: 'plan', done: new Set(['p2701']) });
+  const group = groups.did.sp;
+  assert.equal(group.credits.earned, 3);
+  assert.equal(group.credits.required, 6);
+  assert.equal(group.completedModules, 1);
+  assert.equal(group.targetModules, 2);
+});
+
+test('Gruppenzähler im Alle-Modus nutzen Exklusivwahl und Credit-Bedarf', () => {
+  const { groups } = progress(data, { mode: 'all', done: new Set(['i1206', 'B.Inf.1131']) });
+  assert.deepEqual(
+    [
+      groups.inf.db.credits.earned,
+      groups.inf.db.credits.required,
+      groups.inf.db.completedModules,
+      groups.inf.db.targetModules,
+    ],
+    [5, 5, 1, 1],
+  );
+  assert.equal(groups.phy.wp.credits.required, 8);
+  assert.equal(groups.opt.o.credits.required, 10);
+  assert.equal(groups.inf.w.credits.earned, 6);
+  assert.equal(groups.inf.w.credits.required, 14);
+  assert.equal(groups.inf.w.completedModules, 1);
+  assert.equal(groups.inf.w.availability, true);
+});

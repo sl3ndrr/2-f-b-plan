@@ -2,6 +2,7 @@
 import type { Progress } from '../domain/progress';
 import type { Category, Data } from '../domain/types';
 import { color, element } from './dom';
+import { creditLabel, remainingLabel } from './progressText';
 
 const bands = [
   { id: 'subjects', label: 'Fachstudium', className: 'band' },
@@ -25,10 +26,11 @@ function createTile(category: Category, choose: (id: string) => void) {
   const numbers = element('span', 'tn');
   const credits = element('span');
   const percent = element('span');
+  const remaining = element('span', 'tile-remaining');
   numbers.append(credits, percent);
-  button.append(heading, element('small', '', tileDescription), bar, numbers);
+  button.append(heading, element('small', '', tileDescription), bar, numbers, remaining);
   button.addEventListener('click', () => choose(id));
-  return { button, fill, credits, percent, id };
+  return { button, fill, credits, percent, remaining, id, name };
 }
 
 export function createTiles(data: Data, parent: HTMLElement, choose: (id: string) => void) {
@@ -56,10 +58,14 @@ export function createTiles(data: Data, parent: HTMLElement, choose: (id: string
     for (const { subtotal, tiles } of sections) {
       let earned = 0;
       let required = 0;
-      for (const { button, fill, credits, percent, id } of tiles) {
+      for (const { button, fill, credits, percent, remaining, id, name } of tiles) {
         const status = categories[id];
-        const overflow = status.overflow ? ` (+${status.overflow})` : '';
-        credits.textContent = `${status.capped} / ${status.required} C${overflow}`;
+        credits.textContent = creditLabel(status);
+        remaining.textContent = remainingLabel(status);
+        button.setAttribute(
+          'aria-label',
+          `${name}: ${credits.textContent}, ${status.percent} %, ${remaining.textContent}`,
+        );
         percent.textContent = `${status.percent}%`;
         fill.style.width = `${status.percent}%`;
         button.classList.toggle('on', selected === id);
