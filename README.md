@@ -22,7 +22,7 @@ In den Repository-Einstellungen unter **Pages → Build and deployment → Sourc
 
 Module, Kategorien, Gruppen, Plan-Auswahl und Quellenhinweis liegen in `data/`. [Datenmodell](docs/data-model.md) und [Rezepte](docs/recipes.md) erläutern die Felder. Die [Architektur](docs/architecture.md) zeigt den Weg von den JSON-Dateien zur Anzeige. Bei fachlichen Unklarheiten siehe [offene Fragen](docs/open-questions.md).
 
-Die Toolbar bietet die Animationsstufen **ruhig**, **normal** und **aus**. Der Browser speichert die Wahl unter `zfb2_motion`. Bei systemweit reduzierter Bewegung gilt **aus**, bis die Systemeinstellung geändert wird.
+Animationen laufen mit normaler Geschwindigkeit. Bei systemweit reduzierter Bewegung sind sie deaktiviert.
 
 ## Browserprüfung und Screenshots
 
@@ -39,7 +39,7 @@ Das Skript erzeugt je eine helle und dunkle Ansicht für 390×844, 1280×800, 19
 
 **Sichern** lädt eine JSON-Datei mit den gesetzten Haken herunter. **Laden** ersetzt die Haken durch die Sicherung und meldet verworfene unbekannte IDs. **Kopieren** übernimmt Gruppenstände und offene Pflichtmodule in die Zwischenablage. Die Druckansicht enthält denselben Bericht.
 
-**Zurücksetzen** löscht nach Bestätigung ausschließlich die Haken. Modus, Theme (`zfb2_theme`) und Animation bleiben gespeichert.
+**Zurücksetzen** löscht nach Bestätigung ausschließlich die Haken. Modus und Theme (`zfb2_theme`) bleiben gespeichert.
 
 ## Contributors
 

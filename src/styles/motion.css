@@ -1,17 +1,11 @@
 :root {
-  --wave-duration: 22s;
-  --shimmer-duration: 10s;
+  --wave-duration: 16s;
+  --shimmer-duration: 8s;
   --cursor-duration: 1.2s;
-  --fill-duration: 0.55s;
+  --fill-duration: 0.9s;
   --feedback-duration: 0.2s;
   --intro-duration: 0.45s;
   --row-stagger: 28ms;
-}
-
-:root[data-motion='normal'] {
-  --wave-duration: 16s;
-  --shimmer-duration: 8s;
-  --fill-duration: 0.9s;
 }
 
 .wave {
@@ -72,7 +66,8 @@
 }
 
 .stack i,
-.bar i {
+.bar i,
+#wv clipPath rect {
   transition: width var(--fill-duration) cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 

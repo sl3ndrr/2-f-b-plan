@@ -40,19 +40,6 @@
   color: var(--bg);
 }
 
-.motion-control {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  color: var(--mut);
-  font-size: 0.8rem;
-}
-
-.motion-control select {
-  cursor: pointer;
-  color: var(--tx);
-}
-
 .pr-command {
   white-space: nowrap;
 }

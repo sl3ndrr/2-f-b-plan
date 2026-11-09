@@ -1,24 +1,15 @@
-// Owns the motion selector and ambient animation flags for the hero and terminal cursor.
-import { loadMotion, saveMotion, type Motion } from '../state/preferences';
-import { get } from './dom';
-
+// Manages reduced motion and ambient animation flags for the hero and terminal cursor.
 const cursorIdleAfter = 10_000;
 
-export function connectMotion(hero: HTMLElement, storage: () => Storage) {
+export function connectMotion(hero: HTMLElement) {
   const root = document.documentElement;
-  const selector = get<HTMLSelectElement>('#motion');
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
-  let choice = loadMotion(storage);
   let inView = true;
   let lastActivity = performance.now();
 
   function update() {
-    const effective = reduced.matches ? 'off' : choice;
-    root.dataset.motion = effective;
+    root.dataset.motion = reduced.matches ? 'off' : 'normal';
     root.toggleAttribute('data-motion-paused', document.hidden || !inView);
-    selector.value = effective;
-    selector.disabled = reduced.matches;
-    selector.title = reduced.matches ? 'Bewegung ist in den Systemeinstellungen reduziert.' : '';
   }
 
   function checkIdle() {
@@ -35,11 +26,6 @@ export function connectMotion(hero: HTMLElement, storage: () => Storage) {
     }
   }
 
-  selector.addEventListener('change', () => {
-    choice = selector.value as Motion;
-    saveMotion(storage, choice);
-    update();
-  });
   reduced.addEventListener('change', update);
   document.addEventListener('visibilitychange', update);
   for (const event of ['pointerdown', 'pointermove', 'keydown', 'scroll']) {

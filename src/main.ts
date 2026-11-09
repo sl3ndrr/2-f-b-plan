@@ -34,7 +34,7 @@ connectBackup(store, toast);
 const summary = get('#dyn');
 const listRoot = get('#list');
 const hero = createHero(data, summary);
-const animationRunning = connectMotion(hero.node, storage);
+const animationRunning = connectMotion(hero.node);
 const celebrate = () => {
   if (animationRunning()) burst(data.categories.map(({ colorToken }) => colorToken));
 };
