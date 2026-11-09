@@ -1,0 +1,63 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "array",
+  "description": "Kategorien in Anzeigereihenfolge",
+  "items": {
+    "type": "object",
+    "description": "Kategorie im Abschluss",
+    "properties": {
+      "id": {
+        "type": "string",
+        "minLength": 1,
+        "description": "Stabiler Schlüssel für Credit-Anteile"
+      },
+      "name": {
+        "type": "string",
+        "minLength": 1,
+        "description": "Deutscher Anzeigename"
+      },
+      "symbol": {
+        "type": "string",
+        "minLength": 1,
+        "description": "Symbol in Kacheln und Liste"
+      },
+      "required": {
+        "type": "integer",
+        "minimum": 1,
+        "description": "Credit-Soll der Kategorie"
+      },
+      "colorToken": {
+        "type": "string",
+        "minLength": 1,
+        "description": "Name der CSS-Variable ohne Präfix",
+        "pattern": "^[a-z][a-z0-9-]*$"
+      },
+      "tileDescription": {
+        "type": "string",
+        "minLength": 1,
+        "description": "Beschreibung in der Kategorie-Kachel"
+      },
+      "band": {
+        "description": "Zuordnung zum Kachelband",
+        "enum": ["subjects", "professional", "thesis"]
+      },
+      "checklistLabel": {
+        "type": "string",
+        "minLength": 1,
+        "description": "Text in der Checkliste"
+      }
+    },
+    "required": [
+      "id",
+      "name",
+      "symbol",
+      "required",
+      "colorToken",
+      "tileDescription",
+      "band",
+      "checklistLabel"
+    ],
+    "additionalProperties": false
+  },
+  "minItems": 1
+}

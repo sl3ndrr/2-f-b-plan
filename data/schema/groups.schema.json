@@ -1,0 +1,51 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "array",
+  "description": "Modulgruppen in Anzeigereihenfolge",
+  "items": {
+    "type": "object",
+    "description": "Regeln und Beschriftungen einer Modulgruppe",
+    "properties": {
+      "id": {
+        "type": "string",
+        "minLength": 1,
+        "description": "Stabiler Gruppenschlüssel"
+      },
+      "labels": {
+        "type": "object",
+        "description": "Beschriftung je Ansichtsmodus",
+        "properties": {
+          "plan": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Beschriftung im Plan-Modus"
+          },
+          "all": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Beschriftung im Alle-Modus"
+          }
+        },
+        "required": ["plan", "all"],
+        "additionalProperties": false
+      },
+      "exclusive": {
+        "type": "boolean",
+        "description": "Im Alle-Modus nur eine Option zugleich auswählen"
+      },
+      "fixedCredits": {
+        "type": "object",
+        "description": "Festes Soll je Kategorie im Alle-Modus, falls vorgegeben",
+        "minProperties": 0,
+        "additionalProperties": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Credit-Anteil in C"
+        }
+      }
+    },
+    "required": ["id", "labels", "exclusive", "fixedCredits"],
+    "additionalProperties": false
+  },
+  "minItems": 1
+}

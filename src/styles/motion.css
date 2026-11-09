@@ -1,0 +1,142 @@
+:root {
+  --wave-duration: 22s;
+  --shimmer-duration: 10s;
+  --cursor-duration: 1.2s;
+  --fill-duration: 0.55s;
+  --feedback-duration: 0.2s;
+  --intro-duration: 0.45s;
+  --row-stagger: 28ms;
+}
+
+:root[data-motion='normal'] {
+  --wave-duration: 16s;
+  --shimmer-duration: 8s;
+  --fill-duration: 0.9s;
+}
+
+.wave {
+  animation: wave var(--wave-duration) linear infinite;
+}
+
+@keyframes wave {
+  to {
+    transform: translateX(var(--wave-shift));
+  }
+}
+
+.stack::after {
+  position: absolute;
+  inset: 0;
+  content: '';
+  background: linear-gradient(90deg, transparent, rgb(255 255 255 / 20%), transparent);
+  transform: translateX(-100%);
+  animation: shimmer var(--shimmer-duration) ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  22%,
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.pr i {
+  animation: blink var(--cursor-duration) step-end infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+.hero.complete .stack::after,
+:root[data-cursor-idle] .pr i {
+  animation: none;
+}
+
+:root[data-motion-paused] :is(.wave, .pr i),
+:root[data-motion-paused] .stack::after {
+  animation-play-state: paused;
+}
+
+.btn,
+.seg button,
+.t,
+.r,
+.cb,
+.mt b,
+.chk span,
+#toast {
+  transition-duration: var(--feedback-duration);
+}
+
+.stack i,
+.bar i {
+  transition: width var(--fill-duration) cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.hero,
+.band,
+.enter .r {
+  animation: appear var(--intro-duration) calc(var(--i, 0) * var(--row-stagger)) both;
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: translateY(0.875rem);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.cb:checked::after {
+  animation: check 0.35s cubic-bezier(0.3, 1.6, 0.5, 1);
+}
+
+@keyframes check {
+  from {
+    transform: scale(0) rotate(-60deg);
+  }
+}
+
+.r.pop {
+  animation: pop 0.5s;
+}
+
+@keyframes pop {
+  40% {
+    transform: scale(1.025);
+    box-shadow: 0 0 0 0.4375rem color-mix(in srgb, var(--c) 30%, transparent);
+  }
+}
+
+.cf {
+  animation: confetti 1.5s cubic-bezier(0.2, 0.7, 0.3, 1) forwards;
+}
+
+@keyframes confetti {
+  to {
+    transform: translate(var(--x), var(--y)) rotate(var(--r));
+    opacity: 0;
+  }
+}
+
+:root[data-motion='off'] *,
+:root[data-motion='off'] *::before,
+:root[data-motion='off'] *::after {
+  animation: none !important;
+  transition: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}

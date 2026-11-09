@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "description": "Titel und unveränderte Fußtexte",
+  "properties": {
+    "title": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Dokumenttitel"
+    },
+    "source": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Quellenhinweis und Speicherhinweis"
+    },
+    "planNote": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Erläuterung der Auswahl und Credit-Aufteilung"
+    }
+  },
+  "required": ["title", "source", "planNote"],
+  "additionalProperties": false
+}

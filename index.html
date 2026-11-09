@@ -1,261 +1,66 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="de">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Vincents Plan: Physik × Informatik</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;600;800&display=swap" rel="stylesheet">
-<style>
-:root{--bg:#eef3f8;--grid:#d5e0ec;--card:#fff;--tx:#0f1b2d;--mut:#51637a;--bd:#c6d3e2;--ac:#0369a1;--phy:#0369a1;--inf:#b45309;--did:#be185d;--bw:#6d28d9;--opt:#0f766e;--th:#be123c;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0a111d;--grid:#13203a;--card:#0f1a2c;--tx:#e6eefb;--mut:#8da2c0;--bd:#223452;--ac:#38bdf8;--phy:#38bdf8;--inf:#fbbf24;--did:#f472b6;--bw:#a78bfa;--opt:#5eead4;--th:#fb7185;color-scheme:dark}}
-:root[data-theme="dark"]{--bg:#0a111d;--grid:#13203a;--card:#0f1a2c;--tx:#e6eefb;--mut:#8da2c0;--bd:#223452;--ac:#38bdf8;--phy:#38bdf8;--inf:#fbbf24;--did:#f472b6;--bw:#a78bfa;--opt:#5eead4;--th:#fb7185;color-scheme:dark}
-html{scroll-padding-top:env(safe-area-inset-top,0px)}
-*{box-sizing:border-box}
-body{margin:0;color:var(--tx);font:15px/1.5 "IBM Plex Sans",system-ui,sans-serif;background:var(--bg) linear-gradient(var(--grid) 1px,transparent 1px) 0 0/28px 28px,linear-gradient(90deg,var(--grid) 1px,transparent 1px) 0 0/28px 28px;background-attachment:fixed}
-.w{max-width:1080px;margin:0 auto;padding:22px 16px 60px}
-button{font:inherit;color:inherit;cursor:pointer}
-:focus-visible{outline:2px solid var(--ac);outline-offset:2px}
-.mono,h1,.big,.sh,.cr,.btn,.seg button,.tn,.chk span{font-family:"JetBrains Mono",ui-monospace,Menlo,monospace}
-header{display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;align-items:flex-end;margin-bottom:18px}
-.pr{font-family:"JetBrains Mono",monospace;font-size:12.5px;color:var(--mut)}
-.pr b{color:var(--ph,var(--phy))}.pr i{display:inline-block;width:8px;height:14px;background:var(--inf);vertical-align:-2px;animation:bl 1s steps(2) infinite}
-@keyframes bl{50%{opacity:0}}
-h1{margin:4px 0 0;font-size:clamp(26px,5vw,40px);font-weight:800;letter-spacing:-.03em;line-height:1.1}
-h1 u{text-decoration:none;color:var(--phy)}h1 s{text-decoration:none;color:var(--inf)}
-.acts{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
-.btn,.seg button{background:var(--card);border:1px solid var(--bd);border-radius:6px;padding:7px 12px;font-size:12.5px;font-weight:600;transition:.15s}
-.btn:hover,.seg button:hover{border-color:var(--ac);transform:translateY(-1px)}
-.btn.warn{color:var(--did)}
-.seg{display:flex;gap:4px}
-.seg button.on{background:var(--ac);border-color:var(--ac);color:var(--bg)}
-.hero{background:var(--card);border:1px solid var(--bd);border-radius:8px;padding:20px;position:relative;overflow:hidden;animation:up .6s both}
-@keyframes up{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
-.hh{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:8px}
-.big{font-size:clamp(46px,9vw,76px);font-weight:800;letter-spacing:-.05em;line-height:1}
-.big small{font-size:.3em;color:var(--mut);font-weight:400;letter-spacing:0;margin-left:8px}
-.hr{text-align:right;color:var(--mut);font-size:13px}
-#wv{width:100%;height:120px;display:block;margin:10px 0 4px}
-#wv path{fill:none;stroke-width:2.4;vector-effect:non-scaling-stroke}
-#wv .dim{stroke:var(--mut);opacity:.35;stroke-dasharray:3 5}
-#wv .phy{stroke:var(--phy)}#wv .inf{stroke:var(--inf)}
-.stack{display:flex;height:10px;border-radius:5px;overflow:hidden;background:color-mix(in srgb,var(--mut) 18%,transparent);position:relative;margin:8px 0}
-.stack i{display:block;height:100%;transition:width .9s cubic-bezier(.2,.8,.2,1);background:var(--c)}
-.stack::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.45),transparent);transform:translateX(-100%);animation:sh 3.2s ease-in-out infinite}
-@keyframes sh{60%,100%{transform:translateX(100%)}}
-.leg{display:flex;flex-wrap:wrap;gap:4px 16px;font-size:12.5px;color:var(--mut)}
-.leg b{color:var(--tx);font-family:"JetBrains Mono",monospace}
-.leg s{display:inline-block;width:9px;height:9px;border-radius:2px;background:var(--c);margin-right:5px}
-.sch{display:grid;grid-template-columns:1fr;gap:10px;margin:18px 0}
-.band{border:1px dashed var(--bd);border-radius:8px;padding:12px;background:color-mix(in srgb,var(--card) 70%,transparent);animation:up .6s .1s both}
-.band>h2{margin:0 0 10px;font-size:13px;font-weight:600;display:flex;justify-content:space-between;color:var(--mut)}
-.band>h2 b{color:var(--tx)}
-.row2{display:grid;gap:10px;grid-template-columns:1fr}
-@media(min-width:760px){.sch{grid-template-columns:2fr 3fr}.sch .full{grid-column:1/-1}.prof .row2{grid-template-columns:repeat(3,1fr)}}
-.t{display:flex;flex-direction:column;gap:7px;text-align:left;width:100%;background:var(--card);border:1px solid var(--bd);border-top:3px solid var(--c);border-radius:6px;padding:11px 12px;transition:.2s}
-.t:hover{transform:translateY(-3px);box-shadow:0 8px 22px -10px var(--c);border-color:var(--c)}
-.t.on{box-shadow:0 0 0 2px var(--c)}
-.th2{display:flex;align-items:baseline;gap:8px}
-.th2 b{font-size:14.5px;flex:1}.th2 em{font:normal 600 12px "JetBrains Mono",monospace;color:var(--c)}
-.th2 u{text-decoration:none;font:800 16px "JetBrains Mono",monospace;color:var(--c)}
-.t small{color:var(--mut);font-size:12px;line-height:1.35;flex:1}
-.bar{height:5px;border-radius:3px;background:color-mix(in srgb,var(--mut) 22%,transparent);overflow:hidden}
-.bar i{display:block;height:100%;background:var(--c);transition:width .9s cubic-bezier(.2,.8,.2,1)}
-.tn{display:flex;justify-content:space-between;font-size:12px;font-weight:600}
-.chk{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 20px}
-.chk span{font-size:12px;padding:4px 10px;border-radius:4px;border:1px solid var(--bd);background:var(--card);color:var(--mut);transition:.3s}
-.chk span.ok{color:var(--opt);border-color:var(--opt)}
-.chk span.ok::before{content:"✓ "}.chk span:not(.ok)::before{content:"○ "}
-.bar2{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:12px}
-.bar2 input{flex:1 1 240px;min-width:0;background:var(--card);border:1px solid var(--bd);border-radius:6px;padding:9px 12px;font:inherit;color:var(--tx)}
-.sec{margin:0 0 24px}
-.sh{display:flex;align-items:center;gap:10px;border-bottom:2px solid var(--c);padding-bottom:6px;margin-bottom:4px}
-.sh h3{margin:0;font-size:16px;flex:1}
-.sh span{font-size:13px;font-weight:600;color:var(--c)}
-.gl{margin:12px 0 6px;font-size:12.5px;color:var(--mut)}
-.gl::before{content:"// "}
-.gl em{font-style:normal;color:var(--c)}
-.r{display:flex;align-items:center;gap:12px;padding:9px 12px;border:1px solid var(--bd);border-left:3px solid var(--bd);background:var(--card);border-radius:6px;margin-bottom:6px;cursor:pointer;user-select:none;transition:.2s}
-.r:hover{border-left-color:var(--c);transform:translateX(3px)}
-.r.d{border-left-color:var(--c)}
-.cb{flex:none;width:22px;height:22px;border-radius:4px;border:2px solid var(--mut);display:grid;place-items:center;color:var(--bg);font-weight:800;font-size:13px;transition:.2s}
-.r.rad .cb{border-radius:50%}
-.r.d .cb{background:var(--c);border-color:var(--c)}.r.d .cb::after{content:"✓";animation:ck .35s cubic-bezier(.3,1.6,.5,1)}
-@keyframes ck{from{transform:scale(0) rotate(-60deg)}}
-.r.pop{animation:pop .5s}
-@keyframes pop{40%{transform:scale(1.025);box-shadow:0 0 0 7px color-mix(in srgb,var(--c) 30%,transparent)}}
-.mt{flex:1;min-width:0}.mt b{display:block;font-weight:500;font-size:14.5px;transition:.2s}
-.mt small{color:var(--mut);font:12px "JetBrains Mono",monospace}
-.r.d .mt b{color:var(--mut);text-decoration:line-through}
-.cr{flex:none;font-size:13px;font-weight:600;color:var(--c);background:color-mix(in srgb,var(--c) 13%,transparent);border-radius:4px;padding:3px 8px;text-align:center}
-.cr i{display:block;font:normal 400 10.5px "IBM Plex Sans";color:var(--mut)}
-.enter .r,.enter .sh{animation:up .45s calc(var(--i,0)*28ms) both}
-.empty{text-align:center;color:var(--mut);padding:36px 0}
-footer{color:var(--mut);font-size:12.5px;line-height:1.6;border-top:1px dashed var(--bd);padding-top:14px}
-#toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translate(-50%,30px);opacity:0;background:var(--tx);color:var(--bg);padding:10px 16px;border-radius:6px;font:600 13px "JetBrains Mono",monospace;transition:.3s;pointer-events:none;z-index:9}
-#toast.on{opacity:1;transform:translate(-50%,0)}
-.cf{position:fixed;left:50%;top:40%;width:8px;height:12px;background:var(--c);z-index:8;pointer-events:none;animation:cf 1.5s cubic-bezier(.2,.7,.3,1) forwards}
-@keyframes cf{to{transform:translate(var(--x),var(--y)) rotate(var(--r));opacity:0}}
-@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
-</style>
-</head>
-<body>
-<div class="w">
-<header>
-  <div>
-    <div class="pr"><b>vincent@uni-goettingen</b>:~/2fb-lehramt$ status <i></i></div>
-    <h1><u>Physik</u> × <s>Informatik</s></h1>
-  </div>
-  <div class="acts">
-    <div class="seg" id="mode"><button data-mode="plan">Vincents Plan</button><button data-mode="all">Alle Optionen</button></div>
-    <button class="btn" id="bDemo">Plan abhaken</button>
-    <button class="btn" id="bCopy">Kopieren</button>
-    <button class="btn warn" id="bReset">Zurücksetzen</button>
-    <button class="btn" id="bTheme" aria-label="Hell/Dunkel wechseln">Hell/Dunkel</button>
-  </div>
-</header>
-<div id="dyn"></div>
-<div class="bar2">
-  <input id="q" type="search" placeholder="grep: Modul, Code, Stichwort" aria-label="Modul suchen">
-  <div class="seg" id="seg"><button data-st="all">Alle</button><button data-st="open">Offen</button><button data-st="done">Absolviert</button></div>
-</div>
-<div id="list"></div>
-<footer>
-Quellen: Modulverzeichnisse Physik, Informatik und Professionalisierungsbereich (Amtliche Mitteilungen II Nr. 13/2025). Keine Studienberatung. Deine Haken bleiben nur in diesem Browser gespeichert.<br>
-Vincents Plan: Wahlpflicht B.Phy.2571, Datenbanken B.Inf.1605, Wahlmodule B.Inf.1131, 1210 und SK.Inf.1804, Bachelorarbeit in Physik. B.Phy.2701 (6 C) zählt je 3 C zu Physik und Fachdidaktik, B.Inf.1601 besteht aus zwei Seminaren à 3 C (Informatik und Fachdidaktik).
-</footer>
-</div>
-<div id="toast" role="status"></div>
-<script>
-const REQ={phy:66,inf:66,did:6,bw:20,opt:10,th:12};
-const NAME={phy:"Fach A: Physik",inf:"Fach B: Informatik",did:"Fachdidaktik",bw:"Bildungswiss.",opt:"Optionalbereich",th:"Bachelorarbeit"};
-const SYM={phy:"ψ",inf:"{ }",did:"Δ",bw:"§",opt:"+",th:"∎"};
-const GL={pf:"Pflichtmodule",wp:"Wahlpflicht: genau eines von drei (8 C)",sp:"Geteilte Module: Fach + Fachdidaktik",db:"Datenbanken: eines von zwei, sie schließen sich aus",w:"Wahlmodule: bis zum Soll von 66 C auffüllen",o:"Frei wählbar: mindestens 10 C"};
-const PG={pf:"Pflichtmodule",wp:"Wahlpflicht: gewählt",sp:"Geteilte Module: Fach + Fachdidaktik",db:"Datenbanken: gewählt",w:"Informatik-Wahlmodule: gewählt",o:"Optionalbereich: gewählt"};
-const m=(id,c,t,p,g,n)=>({id,c,t,p,g,n});
-const M=[
-m("p1301","B.Phy.1301","Rechenmethoden der Physik",{phy:6},"pf","nur WiSe"),
-m("p2610","B.Phy.2610","Physikalisches Grundpraktikum für 2FB I",{phy:8},"pf","2 Semester"),
-m("p2611","B.Phy.2611","Physikalisches Grundpraktikum für 2FB II",{phy:5},"pf","nur SoSe, 4. Sem."),
-m("p2101","B.Phy.2101","Experimentalphysik I: Mechanik und Thermodynamik",{phy:6},"pf","nur WiSe"),
-m("p2102","B.Phy.2102","Experimentalphysik II: Elektromagnetismus",{phy:6},"pf","nur SoSe"),
-m("p2103","B.Phy.2103","Experimentalphysik III für 2FB: Wellen, Optik und Atomphysik",{phy:6},"pf","nur WiSe"),
-m("p2201","B.Phy.2201","Theorie I: Mechanik und Quantenmechanik",{phy:6},"pf","nur WiSe"),
-m("p2202","B.Phy.2202","Theorie II: Elektrodynamik und Statistische Mechanik",{phy:6},"pf","nur SoSe"),
-m("p2511","B.Phy.2511","Kern- und Teilchenphysik für 2FB",{phy:6},"pf","nur WiSe"),
-m("p2571","B.Phy.2571","Weiche Materie und Biophysik für 2FB",{phy:8},"wp","nur WiSe"),
-m("p2604","B.Phy.2604","Halbleiterphysik und moderne Bauelemente für 2FB",{phy:8},"wp","nur WiSe"),
-m("p2605","B.Phy.2605","Einführung in die Strömungsmechanik für 2FB",{phy:8},"wp","nur SoSe"),
-m("p2701","B.Phy.2701","Didaktik der Physik I: Einführung",{phy:3,did:3},"sp","6 C gesamt, nur SoSe, 2 Sem."),
-m("i1101","B.Inf.1101","Grundlagen der Informatik und Programmierung",{inf:10},"pf"),
-m("i1102","B.Inf.1102","Grundlagen der Praktischen Informatik",{inf:10},"pf"),
-m("i1103","B.Inf.1103","Algorithmen und Datenstrukturen",{inf:10},"pf","nur WiSe"),
-m("i1604","B.Inf.1604","Programmierpraktikum für Lehramtsstudierende",{inf:5},"pf","ersetzt B.Inf.1801, nur SoSe"),
-m("m0841","B.Mat.0841","Mathematik für Informationswissenschaften I",{inf:9},"pf","Mathe-Paket A"),
-m("i1605","B.Inf.1605","Ausgewählte Aspekte des Themengebiets Datenbanken für Lehramtsstudierende",{inf:3},"db","nur WiSe"),
-m("i1206","B.Inf.1206","Datenbanken",{inf:5},"db"),
-m("i1601a","B.Inf.1601 · Seminar 1","Informatik und Allgemeinbildung (Fachdidaktik Informatik)",{inf:3},"sp","3 C, nur WiSe"),
-m("i1601b","B.Inf.1601 · Seminar 2","Ausgewählte fachdidaktische Themen (Fachdidaktik Informatik)",{did:3},"sp","3 C, nur SoSe"),
-...["B.Inf.1131|Data Science: Grundlagen|6","B.Inf.1201|Theoretische Informatik|5","B.Inf.1202|Formale Systeme|5","B.Inf.1203|Betriebssysteme|5","B.Inf.1204|Telematik / Computernetzwerke|5","B.Inf.1209|Softwaretechnik|5","B.Inf.1210|Computersicherheit und Privatheit|5","B.Inf.1211|Sensordatenverarbeitung|5","B.Inf.1212|Technische Informatik|5","B.Inf.1214|Types and Programming Languages|8","B.Inf.1215|Compiler Construction|6","B.Inf.1216|Compiler Lab|6","B.Inf.1236|Machine Learning|6","B.Inf.1802|Programmierpraktikum|6","B.Inf.1803|Fachpraktikum I|5","B.Inf.1842|Programmieren für Data Scientists: Python|5","B.Mat.0842|Mathematik für Informationswissenschaften II|9","SK.Inf.1801|Funktionale Programmierung|5","SK.Inf.1803|Computer Science for Environmental Sustainability|5","SK.Inf.1804|KI Methoden im akademischen Alltag|5","SK.Inf.1806|Introduction into Web Development|6","SK.Inf.1807|Projektarbeit: Erweiterung|3"].map(s=>{const[c,t,n]=s.split("|");return m(c,c,t,{inf:+n},"w")}),
-m("b1","B.BW.010 · Teil 1","Strukturen, Entwicklungen und Herausforderungen des Schulsystems",{bw:3},"pf","Klausur"),
-m("b2","B.BW.010 · Teil 2","Einführung in die Pädagogische Psychologie: Lehren und Lernen",{bw:3},"pf","Klausur, Vorlesung im WiSe"),
-m("b20","B.BW.020","Handlungsfeld Schule und Allgemeines Schulpraktikum (ASP)",{bw:9},"pf"),
-m("b30","B.BW.030","Praktikum in einem Betrieb, einer sozialen Einrichtung oder einem Sportverein (BSVP)",{bw:5},"pf"),
-m("o713","B.Phy.713","Praxismodul an der Schule: Einführung in das Unterrichten",{opt:4},"o","max. 6 Plätze"),
-m("o1831","B.Inf.1831","Ethische, gesellschaftliche und rechtliche Grundlagen für Data Science",{opt:3},"o"),
-m("olap","LA-PluS","LA-PluS: Praxisnetzwerk MINT-Fachdidaktiken",{opt:3},"o","Zusatzangebot Lehramt PluS"),
-m("th","Bachelorarbeit","Fachwissenschaftliche Bachelorarbeit (Physik)",{th:12},"pf","ohne Modulnummer")
-];
-const PL=x=>["pf","o","sp"].includes(x.g)||["p2571","i1605","B.Inf.1131","B.Inf.1210","SK.Inf.1804"].includes(x.id);
-const RAD={wp:1,db:1};
-const KEY="zfb2_done_v2";
-let done=new Set(),F={cat:null,st:"all",q:""},mode="plan",armed=false,vals={};
-try{done=new Set(JSON.parse(localStorage.getItem(KEY)||"[]").filter(id=>M.some(x=>x.id===id)));mode=localStorage.getItem("zfb2_mode")||"plan"}catch(e){}
-const $=s=>document.querySelector(s),$$=s=>document.querySelectorAll(s);
-const act=x=>mode==="all"||PL(x);
-const save=()=>{try{localStorage.setItem(KEY,JSON.stringify([...done]));localStorage.setItem("zfb2_mode",mode)}catch(e){}};
-const earned=k=>M.reduce((s,x)=>s+(act(x)&&done.has(x.id)&&x.p[k]?x.p[k]:0),0);
-const capped=k=>Math.min(earned(k),REQ[k]);
-const total=()=>Object.keys(REQ).reduce((s,k)=>s+capped(k),0);
-const toast=t=>{const e=$("#toast");e.textContent=t;e.classList.add("on");clearTimeout(toast.h);toast.h=setTimeout(()=>e.classList.remove("on"),3000)};
-function tween(el,to,key){const from=vals[key]||0;vals[key]=to;const t0=performance.now();const f=n=>{const p=Math.min(1,(n-t0)/800);el.textContent=Math.round(from+(to-from)*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(f)};requestAnimationFrame(f)}
-function burst(){const cs=["--phy","--inf","--did","--opt","--th"];for(let i=0;i<44;i++){const d=document.createElement("div");d.className="cf";d.style.cssText=`--c:var(${cs[i%5]});--x:${(Math.random()-.5)*600}px;--y:${Math.random()*500-100}px;--r:${Math.random()*720}deg`;document.body.appendChild(d);setTimeout(()=>d.remove(),1600)}}
-const tile=(k,d)=>`<button class="t" style="--c:var(--${k})" data-cat="${k}"><span class="th2"><u>${SYM[k]}</u><b>${NAME[k]}</b><em>${REQ[k]} C</em></span><small>${d}</small><span class="bar"><i data-b="${k}"></i></span><span class="tn"><span data-n="${k}"></span><span data-p="${k}"></span></span></button>`;
-function build(){
-  const K=Object.keys(REQ);
-  $("#dyn").innerHTML=`<div class="hero"><div class="hh"><div class="big"><span id="cnt">0</span><small>/ 180 C</small></div><div class="hr" id="hr"></div></div>
-<svg id="wv" viewBox="0 0 1000 120" preserveAspectRatio="none" aria-hidden="true"><defs><clipPath id="cp"><rect id="cpr" x="0" y="0" width="0" height="120"/></clipPath><clipPath id="ci"><rect id="cir" x="0" y="0" width="0" height="120"/></clipPath></defs><path class="dim" data-w="s"/><path class="phy" data-w="s" clip-path="url(#cp)"/><path class="dim" data-w="q"/><path class="inf" data-w="q" clip-path="url(#ci)"/></svg>
-<div class="stack">${K.map(k=>`<i data-s="${k}" style="--c:var(--${k});width:0"></i>`).join("")}</div>
-<div class="leg">${K.map(k=>`<span style="--c:var(--${k})"><s></s>${NAME[k]} <b data-l="${k}"></b></span>`).join("")}</div></div>
-<div class="sch">
-<div class="band"><h2>Fachstudium <b data-g="f"></b></h2><div class="row2">${tile("phy","Experimentalphysik, Theorie, Praktika, Wahlpflicht, 3 C aus B.Phy.2701")}${tile("inf","Algorithmen, Systeme, Mathe, Datenbanken, Wahlmodule, Seminar B.Inf.1601")}</div></div>
-<div class="band prof"><h2>Professionalisierung <b data-g="p"></b></h2><div class="row2">${tile("did","3 C aus B.Phy.2701 und 3 C aus B.Inf.1601")}${tile("bw","B.BW.010, Schulpraktikum, Betriebspraktikum")}${tile("opt","Unterrichten, Ethik in Data Science, LA-PluS")}</div></div>
-<div class="band full"><div class="row2">${tile("th","Fachwissenschaftliche Bachelorarbeit")}</div></div>
-</div><div class="chk" id="chk"></div>`;
-}
-function update(){
-  const t=total(),has=ids=>ids.some(i=>done.has(i)&&act(M.find(x=>x.id===i)));
-  tween($("#cnt"),t,"t");
-  $("#hr").innerHTML=`${Math.round(t/180*100)}% kompiliert<br>noch ${180-t} C offen`;
-  for(const k in REQ){const e=earned(k),c=capped(k),pc=Math.round(c/REQ[k]*100);
-    $(`[data-b="${k}"]`).style.width=pc+"%";$(`[data-s="${k}"]`).style.width=c/180*100+"%";
-    $(`[data-n="${k}"]`).textContent=`${c} / ${REQ[k]} C${e>REQ[k]?` (+${e-REQ[k]})`:""}`;$(`[data-p="${k}"]`).textContent=pc+"%";$(`[data-l="${k}"]`).textContent=c;
-    $(`.t[data-cat="${k}"]`).classList.toggle("on",F.cat===k)}
-  $('[data-g="f"]').textContent=`${capped("phy")+capped("inf")} / 132 C`;
-  $('[data-g="p"]').textContent=`${capped("did")+capped("bw")+capped("opt")} / 36 C`;
-  $("#cir").setAttribute("width",capped("inf")/66*1000);$("#cpr").setAttribute("width",capped("phy")/66*1000);
-  const ck=[["Physik: 66 C",earned("phy")>=66],["Physik: Wahlpflicht",has(["p2571","p2604","p2605"])],["Informatik: 66 C",earned("inf")>=66],["Informatik: Datenbanken",has(["i1605","i1206"])],["Fachdidaktik 3+3 C",earned("did")>=6],["Bildungswiss. 20 C",earned("bw")>=20],["Optionalbereich 10 C",earned("opt")>=10],["Bachelorarbeit",earned("th")>=12]];
-  $("#chk").innerHTML=ck.map(c=>`<span class="${c[1]?"ok":""}">${c[0]}</span>`).join("");
-  $$("#mode button").forEach(b=>b.classList.toggle("on",b.dataset.mode===mode));
-  $$("#seg button").forEach(b=>b.classList.toggle("on",b.dataset.st===F.st));
-}
-function sync(){$$(".r").forEach(r=>{const d=done.has(r.dataset.id);r.classList.toggle("d",d);r.setAttribute("aria-checked",d)})}
-function list(anim){
-  const q=F.q.trim().toLowerCase(),G=mode==="plan"?PG:GL;
-  const pass=x=>act(x)&&(!q||(x.t+x.c+(x.n||"")).toLowerCase().includes(q))&&(F.st==="all"||(F.st==="done")===done.has(x.id));
-  const dbC=done.has("i1206")?5:3,need=REQ.inf-47-dbC;let h="",i=0;
-  for(const k of Object.keys(REQ)){
-    if(F.cat&&F.cat!==k)continue;
-    const rows=M.filter(x=>x.p[k]&&pass(x));if(!rows.length)continue;
-    h+=`<section class="sec" style="--c:var(--${k})"><div class="sh" style="--i:${i++}"><h3>${SYM[k]} ${NAME[k]}</h3><span>${REQ[k]} C Soll</span></div>`;
-    for(const g of Object.keys(G)){const gr=rows.filter(x=>x.g===g);if(!gr.length)continue;
-      let ex="";if(mode==="all"&&k==="inf"&&g==="w"){const got=M.filter(x=>x.g==="w"&&done.has(x.id)).reduce((s,x)=>s+x.p.inf,0);ex=` <em>Bedarf ${need} C, gewählt ${got} C</em>`}
-      h+=`<div class="gl">${G[g]}${ex}</div>`+gr.map(x=>{const tot=Object.values(x.p).reduce((a,b)=>a+b,0);
-        return`<div class="r${mode==="all"&&RAD[x.g]?" rad":""}" style="--i:${i++}" data-id="${x.id}" role="checkbox" tabindex="0"><span class="cb"></span><div class="mt"><b>${x.t}</b><small>${x.c}${x.n?" · "+x.n:""}</small></div><span class="cr">${x.p[k]} C${tot>x.p[k]?`<i>von ${tot}</i>`:""}</span></div>`}).join("")}
-    h+="</section>"}
-  const L=$("#list");L.innerHTML=h||`<div class="empty">Kein Treffer. Ändere Suche oder Filter.</div>`;
-  if(anim){L.classList.add("enter");setTimeout(()=>L.classList.remove("enter"),1800)}
-  sync();
-}
-function toggle(id){
-  const x=M.find(y=>y.id===id),before=total();
-  if(done.has(id))done.delete(id);else{if(mode==="all"&&RAD[x.g])M.forEach(y=>{if(y.g===x.g)done.delete(y.id)});done.add(id)}
-  save();sync();update();
-  $$(`.r[data-id="${id}"]`).forEach(r=>{r.classList.remove("pop");void r.offsetWidth;r.classList.add("pop")});
-  if(before<180&&total()===180){toast("make: alle 180 C erfüllt");burst()}
-}
-document.addEventListener("click",e=>{
-  const r=e.target.closest(".r"),t=e.target.closest(".t"),s=e.target.closest("#seg button"),md=e.target.closest("#mode button");
-  if(r)toggle(r.dataset.id);
-  else if(t){F.cat=F.cat===t.dataset.cat?null:t.dataset.cat;update();list(true);if(F.cat)$("#list").scrollIntoView({behavior:"smooth"})}
-  else if(s){F.st=s.dataset.st;update();list(true)}
-  else if(md){mode=md.dataset.mode;save();update();list(true);toast(mode==="plan"?"Vincents Plan: Auswahl festgelegt":"Alle Optionen freigeschaltet")}
-});
-document.addEventListener("keydown",e=>{const r=e.target.closest&&e.target.closest(".r");if(r&&(e.key==="Enter"||e.key===" ")){e.preventDefault();toggle(r.dataset.id)}});
-$("#q").addEventListener("input",e=>{F.q=e.target.value;list(false)});
-$("#bDemo").onclick=()=>{done=new Set(M.filter(PL).map(x=>x.id));save();sync();update();toast("Plan komplett abgehakt: 180 C");burst()};
-$("#bReset").onclick=()=>{if(!armed){armed=true;$("#bReset").textContent="Wirklich löschen?";setTimeout(()=>{armed=false;$("#bReset").textContent="Zurücksetzen"},3000);return}
-  armed=false;$("#bReset").textContent="Zurücksetzen";done.clear();save();sync();update();toast("rm -rf: alle Haken entfernt")};
-$("#bCopy").onclick=()=>{const txt=`Studienfortschritt Physik × Informatik (Lehramt)\nGesamt: ${total()} / 180 C (noch ${180-total()} C)\n`+Object.keys(REQ).map(k=>`${NAME[k]}: ${capped(k)} / ${REQ[k]} C`).join("\n");
-  (navigator.clipboard?navigator.clipboard.writeText(txt):Promise.reject()).then(()=>toast("In die Zwischenablage kopiert")).catch(()=>toast("Kopieren nicht möglich"))};
-$("#bTheme").onclick=()=>{const r=document.documentElement,dark=r.dataset.theme?r.dataset.theme==="dark":matchMedia("(prefers-color-scheme:dark)").matches;r.dataset.theme=dark?"light":"dark"};
-/* Oszilloskop: Sinus (Physik) und Rechteck (Informatik) */
-const red=matchMedia("(prefers-reduced-motion:reduce)").matches;let ph=0;
-function wave(){const S=[],Q=[];for(let x=0;x<=1000;x+=5){const a=x*.03+ph;S.push((x?"L":"M")+x+" "+(34+20*Math.sin(a)).toFixed(1));Q.push((x?"L":"M")+x+" "+(Math.sin(a*.8)>0?80:108))}
-  const s=S.join(""),q=Q.join("");$$('[data-w="s"]').forEach(p=>p.setAttribute("d",s));$$('[data-w="q"]').forEach(p=>p.setAttribute("d",q));
-  if(!red){ph+=.03;requestAnimationFrame(wave)}}
-build();update();list(true);wave();
-</script>
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Vincents Plan: Physik × Informatik</title>
+  </head>
+  <body>
+    <div class="w">
+      <header>
+        <div>
+          <div class="pr">
+            <b>vincent@uni-goettingen</b>:~/2fb-lehramt$
+            <span class="pr-command">status <i aria-hidden="true"></i></span>
+          </div>
+          <h1><u>Physik</u> × <s>Informatik</s></h1>
+        </div>
+        <div class="acts">
+          <div class="seg" id="mode">
+            <button data-mode="plan">Vincents Plan</button
+            ><button data-mode="all">Alle Optionen</button>
+          </div>
+          <label class="motion-control">
+            <span>Animation</span>
+            <select class="btn" id="motion">
+              <option value="calm">ruhig</option>
+              <option value="normal">normal</option>
+              <option value="off">aus</option>
+            </select>
+          </label>
+          <button class="btn" id="bDemo">Plan abhaken</button>
+          <button class="btn" id="bSave">Sichern</button>
+          <button class="btn" id="bLoad" title="Vorhandene Haken durch eine Sicherung ersetzen">
+            Laden
+          </button>
+          <input type="file" id="backupFile" accept="application/json,.json" hidden />
+          <button class="btn" id="bCopy">Kopieren</button>
+          <button class="btn warn" id="bReset">Zurücksetzen</button>
+          <button class="btn" id="bTheme" aria-label="Hell/Dunkel wechseln">Hell/Dunkel</button>
+        </div>
+      </header>
+      <main class="dashboard">
+        <aside id="dyn" class="dashboard-summary" aria-label="Studienübersicht"></aside>
+        <section class="module-panel" aria-label="Modulliste">
+          <div class="bar2">
+            <input
+              id="q"
+              type="search"
+              placeholder="grep: Modul, Code, Stichwort"
+              aria-label="Modul suchen"
+            />
+            <div class="seg" id="seg">
+              <button data-st="all">Alle</button><button data-st="open">Offen</button
+              ><button data-st="done">Absolviert</button>
+            </div>
+          </div>
+          <div id="list" class="module-grid" tabindex="-1"></div>
+        </section>
+      </main>
+      <pre class="print-report" id="printReport"></pre>
+      <footer></footer>
+    </div>
+    <div id="toast" role="status"></div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
 </html>

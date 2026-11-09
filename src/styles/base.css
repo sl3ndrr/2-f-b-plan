@@ -1,0 +1,73 @@
+html {
+  scroll-padding-top: env(safe-area-inset-top, 0rem);
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  color: var(--tx);
+  font:
+    0.9375rem/1.5 'IBM Plex Sans',
+    system-ui,
+    sans-serif;
+  background-color: var(--bg);
+  background-image:
+    linear-gradient(var(--grid) 0.0625rem, transparent 0.0625rem),
+    linear-gradient(90deg, var(--grid) 0.0625rem, transparent 0.0625rem);
+  background-size: 1.75rem 1.75rem;
+  background-attachment: fixed;
+}
+button {
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+:focus-visible {
+  outline: 0.125rem solid var(--ac);
+  outline-offset: 0.125rem;
+}
+.mono,
+h1,
+.big,
+.sh,
+.cr,
+.btn,
+.seg button,
+.tn,
+.chk span {
+  font-family: 'JetBrains Mono', ui-monospace, Menlo, monospace;
+}
+h1 {
+  margin: 0.25rem 0 0;
+  font-size: clamp(1.625rem, 5vw, 2.5rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+h1 u {
+  text-decoration: none;
+  color: var(--phy);
+}
+h1 s {
+  text-decoration: none;
+  color: var(--inf);
+}
+footer {
+  color: var(--mut);
+  font-size: 0.78125rem;
+  line-height: 1.6;
+  border-top: 0.0625rem dashed var(--bd);
+  padding-top: 0.875rem;
+}
+
+.sr-only {
+  position: absolute;
+  inline-size: 0.0625rem;
+  block-size: 0.0625rem;
+  padding: 0;
+  margin: -0.0625rem;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}

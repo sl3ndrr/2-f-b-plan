@@ -1,0 +1,71 @@
+:root {
+  --bg: #eef3f8;
+  --grid: #e4ecf5;
+  --card: #fff;
+  --tx: #0f1b2d;
+  --mut: #51637a;
+  --bd: #c6d3e2;
+  --ac: #0369a1;
+  --phy: #0369a1;
+  --inf: #9a4006;
+  --did: #be185d;
+  --bw: #6d28d9;
+  --opt: #0f766e;
+  --th: #be123c;
+  color-scheme: light;
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0rem);
+  padding-bottom: env(safe-area-inset-bottom, 0rem);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --bg: #0a111d;
+    --grid: #13203a;
+    --card: #0f1a2c;
+    --tx: #e6eefb;
+    --mut: #8da2c0;
+    --bd: #223452;
+    --ac: #38bdf8;
+    --phy: #38bdf8;
+    --inf: #fbbf24;
+    --did: #f472b6;
+    --bw: #a78bfa;
+    --opt: #5eead4;
+    --th: #fb7185;
+    color-scheme: dark;
+  }
+}
+:root[data-theme='dark'] {
+  --bg: #0a111d;
+  --grid: #13203a;
+  --card: #0f1a2c;
+  --tx: #e6eefb;
+  --mut: #8da2c0;
+  --bd: #223452;
+  --ac: #38bdf8;
+  --phy: #38bdf8;
+  --inf: #fbbf24;
+  --did: #f472b6;
+  --bw: #a78bfa;
+  --opt: #5eead4;
+  --th: #fb7185;
+  color-scheme: dark;
+}
+@font-face {
+  font-family: 'IBM Plex Sans';
+  src: url('../assets/fonts/ibm-plex-sans.woff2') format('woff2');
+  font-weight: 400 600;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('../assets/fonts/jetbrains-mono.woff2') format('woff2');
+  font-weight: 400 800;
+  font-display: swap;
+}
+
+:root {
+  font-size: clamp(100%, 93% + 0.12vw, 112.5%);
+  --page-wide: 133.333rem;
+  --dashboard-gap: clamp(1rem, 1.25vw, 1.75rem);
+}
