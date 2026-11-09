@@ -67,7 +67,7 @@ export function createTiles(data: Data, parent: HTMLElement, choose: (id: string
           `${name}: ${credits.textContent}, ${status.percent} %, ${remaining.textContent}`,
         );
         percent.textContent = `${status.percent}%`;
-        fill.style.width = `${status.percent}%`;
+        fill.style.setProperty('--progress', `${status.percent}%`);
         button.classList.toggle('on', selected === id);
         button.setAttribute('aria-pressed', String(selected === id));
         earned += status.capped;

@@ -9,6 +9,20 @@ export function activeModules(data: Data, mode: Selection['mode']) {
   return data.modules.filter(({ id }) => planned.has(id));
 }
 
+export function clearGroup(data: Data, done: ReadonlySet<string>, group: string) {
+  const siblings = new Set(
+    data.modules.filter((module) => module.group === group).map(({ id }) => id),
+  );
+  return new Set([...done].filter((id) => !siblings.has(id)));
+}
+
+export function selectExclusive(data: Data, done: ReadonlySet<string>, id: string) {
+  const module = data.modules.find((candidate) => candidate.id === id);
+  if (!module || !data.groups.some((group) => group.id === module.group && group.exclusive))
+    return new Set(done);
+  return clearGroup(data, done, module.group).add(id);
+}
+
 export function toggleModule(data: Data, selection: Selection, id: string) {
   const next = new Set(selection.done);
   const module = data.modules.find((candidate) => candidate.id === id);
@@ -19,12 +33,9 @@ export function toggleModule(data: Data, selection: Selection, id: string) {
     selection.mode === 'all' &&
     data.groups.some((group) => group.id === module.group && group.exclusive)
   ) {
-    for (const sibling of data.modules) {
-      if (sibling.group === module.group) next.delete(sibling.id);
-    }
+    return selectExclusive(data, next, id);
   }
-  next.add(id);
-  return next;
+  return next.add(id);
 }
 
 export function exclusiveChoice(modules: Module[], plan: string[], done: ReadonlySet<string>) {

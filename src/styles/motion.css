@@ -93,7 +93,7 @@
   }
 }
 
-.r.d .cb::after {
+.cb:checked::after {
   animation: check 0.35s cubic-bezier(0.3, 1.6, 0.5, 1);
 }
 

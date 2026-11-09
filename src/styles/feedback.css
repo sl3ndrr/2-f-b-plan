@@ -11,6 +11,9 @@
   font:
     600 0.8125rem 'JetBrains Mono',
     monospace;
+  max-inline-size: min(36rem, 100vw - 2rem);
+  overflow-wrap: anywhere;
+  text-align: center;
   pointer-events: none;
   z-index: 9;
 }

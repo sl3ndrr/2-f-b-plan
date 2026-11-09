@@ -4,12 +4,10 @@ const doneKey = 'zfb2_done_v2';
 const modeKey = 'zfb2_mode';
 
 export function decodeDone(raw: unknown, knownIds: ReadonlySet<string>) {
-  if (!Array.isArray(raw) || raw.some((id) => typeof id !== 'string')) return null;
-  const ids: string[] = raw;
-  return {
-    done: new Set(ids.filter((id) => knownIds.has(id))),
-    unknown: ids.filter((id) => !knownIds.has(id)),
-  };
+  if (!Array.isArray(raw)) return null;
+  const ids: unknown[] = raw;
+  const known = ids.filter((id): id is string => typeof id === 'string' && knownIds.has(id));
+  return { done: new Set(known), unknown: ids.length - known.length };
 }
 
 export function read(storage: () => Storage, key: string) {
@@ -36,11 +34,11 @@ export function loadSelection(storage: () => Storage, knownIds: ReadonlySet<stri
       mode,
       ...(decodeDone(JSON.parse(read(storage, doneKey) ?? '[]'), knownIds) ?? {
         done: new Set<string>(),
-        unknown: [],
+        unknown: 0,
       }),
     };
   } catch {
-    return { mode, done: new Set<string>(), unknown: [] as string[] };
+    return { mode, done: new Set<string>(), unknown: 0 };
   }
 }
 

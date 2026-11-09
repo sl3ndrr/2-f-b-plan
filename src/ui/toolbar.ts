@@ -3,6 +3,7 @@ import { progress } from '../domain/progress';
 import type { Data, Mode, Status } from '../domain/types';
 import type { State, Store } from '../state/store';
 import { get } from './dom';
+import { formatProgressReport } from './progressReport';
 
 export function connectToolbar(
   data: Data,
@@ -55,29 +56,14 @@ export function connectToolbar(
   });
 
   get('#bCopy').addEventListener('click', async () => {
-    const { categories, total } = progress(data, store.get());
-    const lines = data.categories.map(
-      ({ id, name }) => `${name}: ${categories[id].capped} / ${categories[id].required} C`,
-    );
-    const text = [
-      'Studienfortschritt Physik × Informatik (Lehramt)',
-      `Gesamt: ${total.capped} / ${total.required} C (noch ${total.remaining} C)`,
-      ...lines,
-    ].join('\n');
+    const state = store.get();
+    const text = formatProgressReport(data, state, progress(data, state));
     try {
       await navigator.clipboard.writeText(text);
       toast('In die Zwischenablage kopiert');
     } catch {
       toast('Kopieren nicht möglich');
     }
-  });
-
-  get('#bTheme').addEventListener('click', () => {
-    const root = document.documentElement;
-    const dark = root.dataset.theme
-      ? root.dataset.theme === 'dark'
-      : matchMedia('(prefers-color-scheme: dark)').matches;
-    root.dataset.theme = dark ? 'light' : 'dark';
   });
 
   return (state: State) => {

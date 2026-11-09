@@ -1,6 +1,6 @@
 .pr {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 0.78125rem;
+  font-size: clamp(0.65rem, 2.95vw, 0.78125rem);
   color: var(--mut);
 }
 .pr b {
@@ -51,4 +51,8 @@
 .motion-control select {
   cursor: pointer;
   color: var(--tx);
+}
+
+.pr-command {
+  white-space: nowrap;
 }

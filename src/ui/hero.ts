@@ -49,7 +49,7 @@ export function createHero(data: Data, parent: HTMLElement) {
       lastTotal = total.capped;
     }
     for (const { id, segment, value } of parts) {
-      segment.style.width = `${(categories[id].capped / total.required) * 100}%`;
+      segment.style.setProperty('--progress', `${(categories[id].capped / total.required) * 100}%`);
       value.textContent = String(categories[id].capped);
     }
     const ratio = (id: string) => categories[id].capped / categories[id].required;

@@ -4,6 +4,7 @@ import { resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { chromium, type Page } from 'playwright';
 import { preview } from 'vite';
+import { checkContrast, checkInteractions } from './browser-checks.ts';
 
 const viewports = [
   [390, 844],
@@ -50,7 +51,8 @@ async function checkLayout(page: Page, width: number) {
     assert.ok(dimensions.physics.top > dimensions.summary.top);
   } else {
     assert.ok(dimensions.physics.left > dimensions.summary.left + dimensions.summary.width - 4);
-    assert.equal(dimensions.physics.top, dimensions.computing.top);
+    if (width >= 1920) assert.equal(dimensions.physics.top, dimensions.computing.top);
+    else assert.ok(dimensions.computing.top > dimensions.physics.top);
   }
   if (width >= 2560) {
     assert.equal(dimensions.physics.top, dimensions.didactics.top);
@@ -81,6 +83,7 @@ try {
         await page.locator('[data-category="phy"]').waitFor();
         await page.evaluate(() => document.fonts.ready);
         await checkLayout(page, width);
+        if (width === 390) await checkContrast(page, colorScheme);
         await page.screenshot({
           path: `${output}/${width}x${height}-${colorScheme}.png`,
           animations: 'disabled',
@@ -89,6 +92,8 @@ try {
         await context.close();
       }
     }
+
+    await checkInteractions(browser, url);
 
     const offline = await browser.newContext({ offline: true, reducedMotion: 'reduce' });
     const page = await offline.newPage();

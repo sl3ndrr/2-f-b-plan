@@ -70,6 +70,7 @@
   overflow: hidden;
 }
 .bar i {
+  width: var(--progress, 0%);
   display: block;
   height: 100%;
   background: var(--c);

@@ -34,3 +34,9 @@ npm run screenshots
 ```
 
 Das Skript erzeugt je eine helle und dunkle Ansicht für 390×844, 1280×800, 1920×1080, 2560×1440, 3440×1440 und 3840×2160 in `docs/screenshots/`. Es prüft außerdem horizontales Überlaufen, Spaltenpositionen und den Start der Einzeldatei ohne Netz. Der CI-Lauf stellt die Screenshots als ZIP bereit.
+
+## Fortschritt sichern oder zurücksetzen
+
+**Sichern** lädt eine JSON-Datei mit den gesetzten Haken herunter. **Laden** ersetzt die Haken durch die Sicherung und meldet verworfene unbekannte IDs. **Kopieren** übernimmt Gruppenstände und offene Pflichtmodule in die Zwischenablage. Die Druckansicht enthält denselben Bericht.
+
+**Zurücksetzen** löscht nach Bestätigung ausschließlich die Haken. Modus, Theme (`zfb2_theme`) und Animation bleiben gespeichert.

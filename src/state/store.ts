@@ -1,4 +1,4 @@
-import { toggleModule } from '../domain/rules';
+import { clearGroup, selectExclusive, toggleModule } from '../domain/rules';
 import type { Data, Filter, Mode, Selection } from '../domain/types';
 import { loadSelection, saveSelection } from './storage';
 
@@ -9,6 +9,7 @@ export interface State extends Selection {
 export function createStore(data: Data, storage: () => Storage) {
   const knownIds = new Set(data.modules.map(({ id }) => id));
   const { done, mode, unknown } = loadSelection(storage, knownIds);
+  if (unknown) saveSelection(storage, done, mode);
   let state: State = { done, mode, filter: { category: null, status: 'all', query: '' } };
   const listeners = new Set<(state: State, previous: State) => void>();
 
@@ -32,6 +33,9 @@ export function createStore(data: Data, storage: () => Storage) {
     setMode: (mode: Mode) => update({ mode }),
     setFilter: (filter: Partial<Filter>) => update({ filter: { ...state.filter, ...filter } }),
     toggle: (id: string) => update({ done: toggleModule(data, state, id) }),
+    choose: (id: string) => update({ done: selectExclusive(data, state.done, id) }),
+    clearGroup: (group: string) => update({ done: clearGroup(data, state.done, group) }),
+    restore: (done: ReadonlySet<string>) => update({ done: new Set(done) }),
     fillPlan: () => update({ done: new Set(data.plan) }),
     reset: () => update({ done: new Set<string>() }),
   };

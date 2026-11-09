@@ -10,3 +10,6 @@
 - Die beiden Oszilloskop-Pfade werden einmal erzeugt. CSS verschiebt jeden Pfad um seine Wellenlänge. Die festen SVG-Clips zeigen weiter den jeweiligen Credit-Anteil. Tab- und Hero-Sichtbarkeit steuern die Ruhephasen.
 - CSS Grid steuert die Spalten an zentralen Viewport-Grenzen. Die Abschnittsköpfe passen sich mit Container Queries ihrer eigenen Spaltenbreite an. Die `rem`-Grenzen stehen zusammen in `layout.css`, da CSS-Variablen in nativen Abfragen nicht aufgelöst werden.
 - **Playwright** erzeugt die Screenshots und prüft die Breakpoints und den Offline-Start in Chromium. Die PNGs entstehen in `docs/screenshots/` und werden im CI-Lauf als Artefakt abgelegt.
+- Native Radiogruppen erhalten eine eigene Schaltfläche zum Aufheben der Wahl. Historische Speicherstände mit mehreren Alternativen bleiben bis zur nächsten Wahl oder zum Aufheben erhalten und werden in der Gruppe gekennzeichnet.
+- Das versionierte JSON-Backup enthält nur Haken. Ein Import ersetzt den Fortschritt und lässt Modus, Theme und Animation bestehen.
+- Die Kontrastprüfung verwendet die tatsächlich gerenderten Theme-Variablen und Credit-Farben. Im hellen Theme ist Informatik dunkler und das Raster heller, damit normaler Text auch auf eingefärbten Flächen mindestens 4,5:1 erreicht.

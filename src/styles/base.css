@@ -11,9 +11,11 @@ body {
     0.9375rem/1.5 'IBM Plex Sans',
     system-ui,
     sans-serif;
-  background:
-    var(--bg) linear-gradient(var(--grid) 0.0625rem, transparent 0.0625rem) 0 0/1.75rem 1.75rem,
-    linear-gradient(90deg, var(--grid) 0.0625rem, transparent 0.0625rem) 0 0/1.75rem 1.75rem;
+  background-color: var(--bg);
+  background-image:
+    linear-gradient(var(--grid) 0.0625rem, transparent 0.0625rem),
+    linear-gradient(90deg, var(--grid) 0.0625rem, transparent 0.0625rem);
+  background-size: 1.75rem 1.75rem;
   background-attachment: fixed;
 }
 button {

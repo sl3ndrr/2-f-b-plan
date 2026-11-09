@@ -1,12 +1,15 @@
 import { data } from 'virtual:study-data';
 import { progress } from './domain/progress';
 import { createStore } from './state/store';
+import { connectBackup, ignoredIdsLabel } from './ui/backupControls';
 import { createChecklist } from './ui/checklist';
 import { burst } from './ui/confetti';
 import { element, get } from './ui/dom';
 import { createHero } from './ui/hero';
 import { createModuleList } from './ui/moduleList';
 import { connectMotion } from './ui/motion';
+import { formatProgressReport } from './ui/progressReport';
+import { connectTheme } from './ui/theme';
 import { createTiles } from './ui/tiles';
 import { createToast } from './ui/toast';
 import { connectToolbar } from './ui/toolbar';
@@ -17,12 +20,17 @@ import './styles/components.css';
 import './styles/hero.css';
 import './styles/tiles.css';
 import './styles/module-list.css';
+import './styles/module-row.css';
 import './styles/feedback.css';
 import './styles/motion.css';
+import './styles/print.css';
 
 const storage = () => localStorage;
 const store = createStore(data, storage);
 const toast = createToast(get('#toast'));
+const printReport = get('#printReport');
+connectTheme(storage);
+connectBackup(store, toast);
 const summary = get('#dyn');
 const listRoot = get('#list');
 const hero = createHero(data, summary);
@@ -36,14 +44,21 @@ const tiles = createTiles(data, summary, (id) => {
   if (category) listRoot.scrollIntoView({ behavior: animationRunning() ? 'smooth' : 'instant' });
 });
 const checklist = createChecklist(data, summary);
-const list = createModuleList(data, listRoot, (id) => {
-  const before = progress(data, store.get()).total;
-  store.toggle(id);
-  if (before.remaining && !progress(data, store.get()).total.remaining) {
-    toast(`make: alle ${before.required} C erfüllt`);
-    celebrate();
-  }
-});
+const list = createModuleList(
+  data,
+  listRoot,
+  (id, exclusive) => {
+    const before = progress(data, store.get()).total;
+    if (exclusive) store.choose(id);
+    else store.toggle(id);
+    if (animationRunning()) list.highlight(id);
+    if (before.remaining && !progress(data, store.get()).total.remaining) {
+      toast(`make: alle ${before.required} C erfüllt`);
+      celebrate();
+    }
+  },
+  store.clearGroup,
+);
 const toolbar = connectToolbar(data, store, toast, celebrate);
 
 document.title = data.meta.title;
@@ -55,6 +70,7 @@ function render(state: ReturnType<typeof store.get>, previous?: typeof state) {
   tiles(status, state.filter.category);
   checklist(status);
   toolbar(state);
+  printReport.textContent = formatProgressReport(data, state, status);
   if (
     !previous ||
     state.mode !== previous.mode ||
@@ -74,3 +90,4 @@ function render(state: ReturnType<typeof store.get>, previous?: typeof state) {
 
 render(store.get());
 store.subscribe(render);
+if (store.unknown) toast(ignoredIdsLabel(store.unknown));

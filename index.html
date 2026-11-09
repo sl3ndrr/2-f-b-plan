@@ -10,7 +10,8 @@
       <header>
         <div>
           <div class="pr">
-            <b>vincent@uni-goettingen</b>:~/2fb-lehramt$ status <i aria-hidden="true"></i>
+            <b>vincent@uni-goettingen</b>:~/2fb-lehramt$
+            <span class="pr-command">status <i aria-hidden="true"></i></span>
           </div>
           <h1><u>Physik</u> × <s>Informatik</s></h1>
         </div>
@@ -28,6 +29,11 @@
             </select>
           </label>
           <button class="btn" id="bDemo">Plan abhaken</button>
+          <button class="btn" id="bSave">Sichern</button>
+          <button class="btn" id="bLoad" title="Vorhandene Haken durch eine Sicherung ersetzen">
+            Laden
+          </button>
+          <input type="file" id="backupFile" accept="application/json,.json" hidden />
           <button class="btn" id="bCopy">Kopieren</button>
           <button class="btn warn" id="bReset">Zurücksetzen</button>
           <button class="btn" id="bTheme" aria-label="Hell/Dunkel wechseln">Hell/Dunkel</button>
@@ -51,6 +57,7 @@
           <div id="list" class="module-grid" tabindex="-1"></div>
         </section>
       </main>
+      <pre class="print-report" id="printReport"></pre>
       <footer></footer>
     </div>
     <div id="toast" role="status"></div>

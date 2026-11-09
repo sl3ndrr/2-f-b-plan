@@ -33,3 +33,5 @@ Dieser Tracker zeigt den Studienfortschritt im Göttinger Zwei-Fächer-Bachelor 
 - Studieninhalte stehen in den Daten, keine Laufzeitabhängigkeiten und kein Backend.
 
 Fertig ist eine Änderung, wenn `npm run check` grün ist und die relevanten Invarianten erhalten sind.
+
+`zfb2_theme` speichert `light` oder `dark`. `zfb2_motion` speichert `calm`, `normal` oder `off`. Zurücksetzen betrifft nur die Haken.

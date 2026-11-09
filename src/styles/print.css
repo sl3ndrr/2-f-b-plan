@@ -1,0 +1,49 @@
+.print-report {
+  display: none;
+}
+
+@media print {
+  :root {
+    color-scheme: light;
+    font-size: 100%;
+  }
+
+  body {
+    color: #000;
+    background: #fff;
+  }
+
+  .w {
+    max-inline-size: none;
+    padding: 0;
+  }
+
+  header,
+  .dashboard,
+  #toast,
+  .cf {
+    display: none;
+  }
+
+  .print-report {
+    display: block;
+    margin: 0 0 0.75rem;
+    font:
+      10pt/1.4 system-ui,
+      sans-serif;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+  }
+
+  footer {
+    color: #222;
+    border-color: #bbb;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}

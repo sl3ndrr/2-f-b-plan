@@ -55,7 +55,7 @@ test('Migration behält bekannte IDs und verwirft fremde IDs', () => {
       getItem: (key: string) => (key === 'zfb2_done_v2' ? '["p1301","i1605","xyz"]' : 'all'),
     }) as Storage;
   const selection = loadSelection(storage, new Set(data.modules.map(({ id }) => id)));
-  assert.deepEqual(selection, { mode: 'all', done: new Set(['p1301', 'i1605']), unknown: ['xyz'] });
+  assert.deepEqual(selection, { mode: 'all', done: new Set(['p1301', 'i1605']), unknown: 1 });
 });
 
 test('Gruppenzähler im Plan summieren nur die Credit-Anteile der aktiven Kategorie', () => {

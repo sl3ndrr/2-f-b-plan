@@ -53,13 +53,9 @@ header {
   container: study-modules / inline-size;
 }
 
-.module-grid:focus {
-  outline: none;
-}
-
 .mt b,
 .mt small,
-.sh h3 {
+.sh h2 {
   overflow-wrap: anywhere;
 }
 
