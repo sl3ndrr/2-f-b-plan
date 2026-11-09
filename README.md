@@ -40,3 +40,7 @@ Das Skript erzeugt je eine helle und dunkle Ansicht für 390×844, 1280×800, 19
 **Sichern** lädt eine JSON-Datei mit den gesetzten Haken herunter. **Laden** ersetzt die Haken durch die Sicherung und meldet verworfene unbekannte IDs. **Kopieren** übernimmt Gruppenstände und offene Pflichtmodule in die Zwischenablage. Die Druckansicht enthält denselben Bericht.
 
 **Zurücksetzen** löscht nach Bestätigung ausschließlich die Haken. Modus, Theme (`zfb2_theme`) und Animation bleiben gespeichert.
+
+## Contributors
+
+- **GPT Codex (OpenAI)** – Repository-Umbau, Weiterentwicklung der Oberfläche, Tests und Dokumentation.
