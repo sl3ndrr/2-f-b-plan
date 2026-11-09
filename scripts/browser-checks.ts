@@ -81,7 +81,10 @@ export async function checkInteractions(browser: Browser, url: string) {
     await page.goto(url);
     const stored = (key: string) => page.evaluate((key) => localStorage.getItem(key), key);
     const row = (id: string) => page.locator(`[data-id="${id}"] input`);
-    await page.evaluate(() => localStorage.setItem('zfb2_done_v2', '["p1301","i1605","xyz"]'));
+    await page.evaluate(() => {
+      localStorage.setItem('zfb2_done_v2', '["p1301","i1605","xyz"]');
+      localStorage.setItem('zfb2_motion', 'off');
+    });
     await page.reload();
     await page.locator('#toast').filter({ hasText: '1 unbekannte ID verworfen' }).waitFor();
     assert.deepEqual(JSON.parse((await stored('zfb2_done_v2'))!), ['p1301', 'i1605']);
@@ -103,10 +106,42 @@ export async function checkInteractions(browser: Browser, url: string) {
     assert.equal(await row('i1206').isChecked(), false);
 
     await page.locator('#bTheme').click();
-    await page.locator('#motion').selectOption('normal');
     await page.reload();
     assert.equal(await page.locator('html').getAttribute('data-theme'), 'dark');
     assert.equal(await page.locator('html').getAttribute('data-motion'), 'normal');
+    assert.equal(await page.locator('#motion').count(), 0);
+
+    for (const [subject, module] of [
+      ['phy', 'p1301'],
+      ['inf', 'i1101'],
+    ]) {
+      const clip = page.locator(`#wave-${subject} rect`);
+      const before = await clip.evaluate((rect) => getComputedStyle(rect).width);
+      assert.equal(before, '0px');
+      await row(module).press('Space');
+      const widths = await clip.evaluate((rect) => {
+        const style = getComputedStyle(rect);
+        const target = Number(rect.getAttribute('width'));
+        // Flush the style change before looking up the resulting CSS transition.
+        const initial = Number.parseFloat(style.width);
+        const transition = rect
+          .getAnimations()
+          .find(
+            (animation) =>
+              animation instanceof CSSTransition && animation.transitionProperty === 'width',
+          );
+        if (!transition?.effect) throw new Error('Kein Übergang für die Fortschrittsanzeige');
+        transition.currentTime = Number(transition.effect.getComputedTiming().duration) / 2;
+        const middle = Number.parseFloat(style.width);
+        transition.finish();
+        return { initial, middle, end: Number.parseFloat(style.width), target };
+      });
+      assert.ok(
+        widths.initial < widths.target && widths.middle > 0 && widths.middle < widths.target,
+      );
+      assert.ok(Math.abs(widths.end - widths.target) < 0.01);
+    }
+
     await page.locator('#bDemo').click();
     await page.locator('.hero.complete').waitFor();
     assert.equal(
@@ -127,7 +162,6 @@ export async function checkInteractions(browser: Browser, url: string) {
     assert.equal(await stored('zfb2_done_v2'), '[]');
     assert.equal(await stored('zfb2_mode'), 'all');
     assert.equal(await stored('zfb2_theme'), 'dark');
-    assert.equal(await stored('zfb2_motion'), 'normal');
 
     await page.locator('#backupFile').setInputFiles({
       name: 'fortschritt.json',
@@ -147,7 +181,6 @@ export async function checkInteractions(browser: Browser, url: string) {
       .filter({ hasText: /Offene Pflichtmodule des Plans/ })
       .waitFor();
     await page.locator('html[data-motion="off"]').waitFor();
-    assert.equal(await stored('zfb2_motion'), 'normal');
     assert.deepEqual(errors, []);
   } finally {
     await context.close();
