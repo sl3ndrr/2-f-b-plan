@@ -7,3 +7,4 @@
 - `plan.json` ist die einzige Quelle für die Plan-Zugehörigkeit. Die Reihenfolge der Modulliste bleibt bei den Moduldaten.
 - Die Einzeldatei entsteht aus demselben Vite-Build. Ein kleines Build-Skript integriert die erzeugten CSS- und JS-Dateien. Vite integriert die lokal mitgelieferten Schriften. So ist kein zusätzliches Vite-Plugin nötig.
 - IBM Plex Sans und JetBrains Mono stammen aus dem Google-Fonts-Repository. Die lokalen WOFF2-Dateien decken lateinische Zeichen und UI-Symbole ab. Die OFL-Lizenzen liegen daneben.
+- Die beiden Oszilloskop-Pfade werden einmal erzeugt. CSS verschiebt jeden Pfad um seine Wellenlänge. Die festen SVG-Clips zeigen weiter den jeweiligen Credit-Anteil. Tab- und Hero-Sichtbarkeit steuern die Ruhephasen.

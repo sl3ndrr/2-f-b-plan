@@ -2,7 +2,7 @@
 import { color, element } from './dom';
 
 export function burst(tokens: string[]) {
-  if (matchMedia('(prefers-reduced-motion: reduce)').matches || !tokens.length) return;
+  if (!tokens.length) return;
   for (let index = 0; index < 44; index++) {
     const particle = color(element('div', 'cf'), tokens[index % tokens.length]);
     particle.setAttribute('aria-hidden', 'true');

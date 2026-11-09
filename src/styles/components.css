@@ -12,7 +12,6 @@
   height: 14px;
   background: var(--inf);
   vertical-align: -2px;
-  animation: bl 1s steps(2) infinite;
 }
 .btn,
 .seg button {
@@ -22,7 +21,6 @@
   padding: 7px 12px;
   font-size: 12.5px;
   font-weight: 600;
-  transition: 0.15s;
 }
 .btn:hover,
 .seg button:hover {
@@ -40,4 +38,17 @@
   background: var(--ac);
   border-color: var(--ac);
   color: var(--bg);
+}
+
+.motion-control {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--mut);
+  font-size: 0.8rem;
+}
+
+.motion-control select {
+  cursor: pointer;
+  color: var(--tx);
 }

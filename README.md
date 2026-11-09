@@ -21,3 +21,5 @@ In den Repository-Einstellungen unter **Pages → Build and deployment → Sourc
 ## Daten pflegen
 
 Module, Kategorien, Gruppen, Plan-Auswahl und Quellenhinweis liegen in `data/`. [Datenmodell](docs/data-model.md) und [Rezepte](docs/recipes.md) erläutern die Felder. Die [Architektur](docs/architecture.md) zeigt den Weg von den JSON-Dateien zur Anzeige. Bei fachlichen Unklarheiten siehe [offene Fragen](docs/open-questions.md).
+
+Die Toolbar bietet die Animationsstufen **ruhig**, **normal** und **aus**. Der Browser speichert die Wahl unter `zfb2_motion`. Bei systemweit reduzierter Bewegung gilt **aus**, bis die Systemeinstellung geändert wird.

@@ -6,6 +6,7 @@ import { burst } from './ui/confetti';
 import { element, get } from './ui/dom';
 import { createHero } from './ui/hero';
 import { createModuleList } from './ui/moduleList';
+import { connectMotion } from './ui/motion';
 import { createTiles } from './ui/tiles';
 import { createToast } from './ui/toast';
 import { connectToolbar } from './ui/toolbar';
@@ -19,16 +20,20 @@ import './styles/module-list.css';
 import './styles/feedback.css';
 import './styles/motion.css';
 
-const store = createStore(data, () => localStorage);
+const storage = () => localStorage;
+const store = createStore(data, storage);
 const toast = createToast(get('#toast'));
-const celebrate = () => burst(data.categories.map(({ colorToken }) => colorToken));
 const summary = get('#dyn');
 const listRoot = get('#list');
 const hero = createHero(data, summary);
+const animationRunning = connectMotion(hero.node, storage);
+const celebrate = () => {
+  if (animationRunning()) burst(data.categories.map(({ colorToken }) => colorToken));
+};
 const tiles = createTiles(data, summary, (id) => {
   const category = store.get().filter.category === id ? null : id;
   store.setFilter({ category });
-  if (category) listRoot.scrollIntoView({ behavior: 'smooth' });
+  if (category) listRoot.scrollIntoView({ behavior: animationRunning() ? 'smooth' : 'instant' });
 });
 const checklist = createChecklist(data, summary);
 const list = createModuleList(data, listRoot, (id) => {

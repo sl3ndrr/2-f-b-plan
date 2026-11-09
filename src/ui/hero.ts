@@ -36,6 +36,7 @@ export function createHero(data: Data, parent: HTMLElement) {
   let lastTotal = -1;
   function update({ categories, total }: Progress) {
     if (lastTotal !== total.capped) {
+      hero.classList.toggle('complete', total.remaining === 0);
       count.textContent = String(total.capped);
       target.textContent = `/ ${total.required} C`;
       status.replaceChildren(
