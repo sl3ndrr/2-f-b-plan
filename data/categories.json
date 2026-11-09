@@ -1,0 +1,62 @@
+[
+  {
+    "id": "phy",
+    "name": "Fach A: Physik",
+    "symbol": "ψ",
+    "required": 66,
+    "colorToken": "phy",
+    "tileDescription": "Experimentalphysik, Theorie, Praktika, Wahlpflicht, 3 C aus B.Phy.2701",
+    "band": "subjects",
+    "checklistLabel": "Physik: 66 C"
+  },
+  {
+    "id": "inf",
+    "name": "Fach B: Informatik",
+    "symbol": "{ }",
+    "required": 66,
+    "colorToken": "inf",
+    "tileDescription": "Algorithmen, Systeme, Mathe, Datenbanken, Wahlmodule, Seminar B.Inf.1601",
+    "band": "subjects",
+    "checklistLabel": "Informatik: 66 C"
+  },
+  {
+    "id": "did",
+    "name": "Fachdidaktik",
+    "symbol": "Δ",
+    "required": 6,
+    "colorToken": "did",
+    "tileDescription": "3 C aus B.Phy.2701 und 3 C aus B.Inf.1601",
+    "band": "professional",
+    "checklistLabel": "Fachdidaktik 3+3 C"
+  },
+  {
+    "id": "bw",
+    "name": "Bildungswiss.",
+    "symbol": "§",
+    "required": 20,
+    "colorToken": "bw",
+    "tileDescription": "B.BW.010, Schulpraktikum, Betriebspraktikum",
+    "band": "professional",
+    "checklistLabel": "Bildungswiss. 20 C"
+  },
+  {
+    "id": "opt",
+    "name": "Optionalbereich",
+    "symbol": "+",
+    "required": 10,
+    "colorToken": "opt",
+    "tileDescription": "Unterrichten, Ethik in Data Science, LA-PluS",
+    "band": "professional",
+    "checklistLabel": "Optionalbereich 10 C"
+  },
+  {
+    "id": "th",
+    "name": "Bachelorarbeit",
+    "symbol": "∎",
+    "required": 12,
+    "colorToken": "th",
+    "tileDescription": "Fachwissenschaftliche Bachelorarbeit",
+    "band": "thesis",
+    "checklistLabel": "Bachelorarbeit"
+  }
+]

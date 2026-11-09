@@ -1,0 +1,43 @@
+.pr {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12.5px;
+  color: var(--mut);
+}
+.pr b {
+  color: var(--ph, var(--phy));
+}
+.pr i {
+  display: inline-block;
+  width: 8px;
+  height: 14px;
+  background: var(--inf);
+  vertical-align: -2px;
+  animation: bl 1s steps(2) infinite;
+}
+.btn,
+.seg button {
+  background: var(--card);
+  border: 1px solid var(--bd);
+  border-radius: 6px;
+  padding: 7px 12px;
+  font-size: 12.5px;
+  font-weight: 600;
+  transition: 0.15s;
+}
+.btn:hover,
+.seg button:hover {
+  border-color: var(--ac);
+  transform: translateY(-1px);
+}
+.btn.warn {
+  color: var(--did);
+}
+.seg {
+  display: flex;
+  gap: 4px;
+}
+.seg button.on {
+  background: var(--ac);
+  border-color: var(--ac);
+  color: var(--bg);
+}

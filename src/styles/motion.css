@@ -1,0 +1,53 @@
+@keyframes bl {
+  50% {
+    opacity: 0;
+  }
+}
+@keyframes up {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes sh {
+  60%,
+  100% {
+    transform: translateX(100%);
+  }
+}
+@keyframes ck {
+  from {
+    transform: scale(0) rotate(-60deg);
+  }
+}
+.r.pop {
+  animation: pop 0.5s;
+}
+@keyframes pop {
+  40% {
+    transform: scale(1.025);
+    box-shadow: 0 0 0 7px color-mix(in srgb, var(--c) 30%, transparent);
+  }
+}
+.enter .r,
+.enter .sh {
+  animation: up 0.45s calc(var(--i, 0) * 28ms) both;
+}
+@keyframes cf {
+  to {
+    transform: translate(var(--x), var(--y)) rotate(var(--r));
+    opacity: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}

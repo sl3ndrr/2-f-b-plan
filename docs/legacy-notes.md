@@ -7,7 +7,7 @@
 - Das Oszilloskop zeichnet pro Frame neu. Das Layout endet bei 1080 px. Theme-Wahl und Fortschrittsexport fehlen.
 - Die unveränderte Vorlage liegt unter [legacy/index.original.html](legacy/index.original.html). Der Referenztest führt ihre ursprünglichen Berechnungen mit leerem und vollständigem Plan aus.
 
-| Zustand | Physik | Informatik | Fachdidaktik | Bildungswiss. | Optionalbereich | Bachelorarbeit | Gesamt |
-| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| Leer | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
-| Vollständig | 66 | 66 | 6 | 20 | 10 | 12 | 180 |
+| Zustand     | Physik | Informatik | Fachdidaktik | Bildungswiss. | Optionalbereich | Bachelorarbeit | Gesamt |
+| ----------- | -----: | ---------: | -----------: | ------------: | --------------: | -------------: | -----: |
+| Leer        |      0 |          0 |            0 |             0 |               0 |              0 |      0 |
+| Vollständig |     66 |         66 |            6 |            20 |              10 |             12 |    180 |

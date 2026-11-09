@@ -1,0 +1,60 @@
+[
+  {
+    "id": "pf",
+    "labels": {
+      "plan": "Pflichtmodule",
+      "all": "Pflichtmodule"
+    },
+    "exclusive": false,
+    "fixedCredits": {}
+  },
+  {
+    "id": "wp",
+    "labels": {
+      "plan": "Wahlpflicht: gewählt",
+      "all": "Wahlpflicht: genau eines von drei (8 C)"
+    },
+    "exclusive": true,
+    "fixedCredits": {
+      "phy": 8
+    }
+  },
+  {
+    "id": "sp",
+    "labels": {
+      "plan": "Geteilte Module: Fach + Fachdidaktik",
+      "all": "Geteilte Module: Fach + Fachdidaktik"
+    },
+    "exclusive": false,
+    "fixedCredits": {}
+  },
+  {
+    "id": "db",
+    "labels": {
+      "plan": "Datenbanken: gewählt",
+      "all": "Datenbanken: eines von zwei, sie schließen sich aus"
+    },
+    "exclusive": true,
+    "fixedCredits": {}
+  },
+  {
+    "id": "w",
+    "labels": {
+      "plan": "Informatik-Wahlmodule: gewählt",
+      "all": "Wahlmodule: bis zum Soll von 66 C auffüllen"
+    },
+    "exclusive": false,
+    "fixedCredits": {}
+  },
+  {
+    "id": "o",
+    "labels": {
+      "plan": "Optionalbereich: gewählt",
+      "all": "Frei wählbar: mindestens 10 C"
+    },
+    "exclusive": false,
+    "fixedCredits": {
+      "opt": 10
+    }
+  }
+]

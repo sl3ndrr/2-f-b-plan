@@ -1,0 +1,117 @@
+.band {
+  border: 1px dashed var(--bd);
+  border-radius: 8px;
+  padding: 12px;
+  background: color-mix(in srgb, var(--card) 70%, transparent);
+  animation: up 0.6s 0.1s both;
+}
+.band > h2 {
+  margin: 0 0 10px;
+  font-size: 13px;
+  font-weight: 600;
+  display: flex;
+  justify-content: space-between;
+  color: var(--mut);
+}
+.band > h2 b {
+  color: var(--tx);
+}
+.t {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  text-align: left;
+  width: 100%;
+  background: var(--card);
+  border: 1px solid var(--bd);
+  border-top: 3px solid var(--c);
+  border-radius: 6px;
+  padding: 11px 12px;
+  transition: 0.2s;
+}
+.t:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 22px -10px var(--c);
+  border-color: var(--c);
+}
+.t.on {
+  box-shadow: 0 0 0 2px var(--c);
+}
+.th2 {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+.th2 b {
+  font-size: 14.5px;
+  flex: 1;
+}
+.th2 em {
+  font:
+    normal 600 12px 'JetBrains Mono',
+    monospace;
+  color: var(--c);
+}
+.th2 u {
+  text-decoration: none;
+  font:
+    800 16px 'JetBrains Mono',
+    monospace;
+  color: var(--c);
+}
+.t small {
+  color: var(--mut);
+  font-size: 12px;
+  line-height: 1.35;
+  flex: 1;
+}
+.bar {
+  height: 5px;
+  border-radius: 3px;
+  background: color-mix(in srgb, var(--mut) 22%, transparent);
+  overflow: hidden;
+}
+.bar i {
+  display: block;
+  height: 100%;
+  background: var(--c);
+  transition: width 0.9s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.tn {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  font-weight: 600;
+}
+.chk {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 0 0 20px;
+}
+.chk span {
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 4px;
+  border: 1px solid var(--bd);
+  background: var(--card);
+  color: var(--mut);
+  transition: 0.3s;
+}
+.chk span.ok {
+  color: var(--opt);
+  border-color: var(--opt);
+}
+.chk span.ok::before {
+  content: '✓ ';
+}
+.chk span:not(.ok)::before {
+  content: '○ ';
+}
+.bar2 {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 12px;
+}

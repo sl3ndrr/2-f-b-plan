@@ -1,0 +1,575 @@
+[
+  {
+    "id": "p1301",
+    "code": "B.Phy.1301",
+    "title": "Rechenmethoden der Physik",
+    "credits": {
+      "phy": 6
+    },
+    "group": "pf",
+    "offered": "WiSe",
+    "note": "nur WiSe"
+  },
+  {
+    "id": "p2610",
+    "code": "B.Phy.2610",
+    "title": "Physikalisches Grundpraktikum für 2FB I",
+    "credits": {
+      "phy": 8
+    },
+    "group": "pf",
+    "offered": null,
+    "note": "2 Semester"
+  },
+  {
+    "id": "p2611",
+    "code": "B.Phy.2611",
+    "title": "Physikalisches Grundpraktikum für 2FB II",
+    "credits": {
+      "phy": 5
+    },
+    "group": "pf",
+    "offered": "SoSe",
+    "note": "nur SoSe, 4. Sem."
+  },
+  {
+    "id": "p2101",
+    "code": "B.Phy.2101",
+    "title": "Experimentalphysik I: Mechanik und Thermodynamik",
+    "credits": {
+      "phy": 6
+    },
+    "group": "pf",
+    "offered": "WiSe",
+    "note": "nur WiSe"
+  },
+  {
+    "id": "p2102",
+    "code": "B.Phy.2102",
+    "title": "Experimentalphysik II: Elektromagnetismus",
+    "credits": {
+      "phy": 6
+    },
+    "group": "pf",
+    "offered": "SoSe",
+    "note": "nur SoSe"
+  },
+  {
+    "id": "p2103",
+    "code": "B.Phy.2103",
+    "title": "Experimentalphysik III für 2FB: Wellen, Optik und Atomphysik",
+    "credits": {
+      "phy": 6
+    },
+    "group": "pf",
+    "offered": "WiSe",
+    "note": "nur WiSe"
+  },
+  {
+    "id": "p2201",
+    "code": "B.Phy.2201",
+    "title": "Theorie I: Mechanik und Quantenmechanik",
+    "credits": {
+      "phy": 6
+    },
+    "group": "pf",
+    "offered": "WiSe",
+    "note": "nur WiSe"
+  },
+  {
+    "id": "p2202",
+    "code": "B.Phy.2202",
+    "title": "Theorie II: Elektrodynamik und Statistische Mechanik",
+    "credits": {
+      "phy": 6
+    },
+    "group": "pf",
+    "offered": "SoSe",
+    "note": "nur SoSe"
+  },
+  {
+    "id": "p2511",
+    "code": "B.Phy.2511",
+    "title": "Kern- und Teilchenphysik für 2FB",
+    "credits": {
+      "phy": 6
+    },
+    "group": "pf",
+    "offered": "WiSe",
+    "note": "nur WiSe"
+  },
+  {
+    "id": "p2571",
+    "code": "B.Phy.2571",
+    "title": "Weiche Materie und Biophysik für 2FB",
+    "credits": {
+      "phy": 8
+    },
+    "group": "wp",
+    "offered": "WiSe",
+    "note": "nur WiSe"
+  },
+  {
+    "id": "p2604",
+    "code": "B.Phy.2604",
+    "title": "Halbleiterphysik und moderne Bauelemente für 2FB",
+    "credits": {
+      "phy": 8
+    },
+    "group": "wp",
+    "offered": "WiSe",
+    "note": "nur WiSe"
+  },
+  {
+    "id": "p2605",
+    "code": "B.Phy.2605",
+    "title": "Einführung in die Strömungsmechanik für 2FB",
+    "credits": {
+      "phy": 8
+    },
+    "group": "wp",
+    "offered": "SoSe",
+    "note": "nur SoSe"
+  },
+  {
+    "id": "p2701",
+    "code": "B.Phy.2701",
+    "title": "Didaktik der Physik I: Einführung",
+    "credits": {
+      "phy": 3,
+      "did": 3
+    },
+    "group": "sp",
+    "offered": "SoSe",
+    "note": "6 C gesamt, nur SoSe, 2 Sem."
+  },
+  {
+    "id": "i1101",
+    "code": "B.Inf.1101",
+    "title": "Grundlagen der Informatik und Programmierung",
+    "credits": {
+      "inf": 10
+    },
+    "group": "pf",
+    "offered": null,
+    "note": null
+  },
+  {
+    "id": "i1102",
+    "code": "B.Inf.1102",
+    "title": "Grundlagen der Praktischen Informatik",
+    "credits": {
+      "inf": 10
+    },
+    "group": "pf",
+    "offered": null,
+    "note": null
+  },
+  {
+    "id": "i1103",
+    "code": "B.Inf.1103",
+    "title": "Algorithmen und Datenstrukturen",
+    "credits": {
+      "inf": 10
+    },
+    "group": "pf",
+    "offered": "WiSe",
+    "note": "nur WiSe"
+  },
+  {
+    "id": "i1604",
+    "code": "B.Inf.1604",
+    "title": "Programmierpraktikum für Lehramtsstudierende",
+    "credits": {
+      "inf": 5
+    },
+    "group": "pf",
+    "offered": "SoSe",
+    "note": "ersetzt B.Inf.1801, nur SoSe"
+  },
+  {
+    "id": "m0841",
+    "code": "B.Mat.0841",
+    "title": "Mathematik für Informationswissenschaften I",
+    "credits": {
+      "inf": 9
+    },
+    "group": "pf",
+    "offered": null,
+    "note": "Mathe-Paket A"
+  },
+  {
+    "id": "i1605",
+    "code": "B.Inf.1605",
+    "title": "Ausgewählte Aspekte des Themengebiets Datenbanken für Lehramtsstudierende",
+    "credits": {
+      "inf": 3
+    },
+    "group": "db",
+    "offered": "WiSe",
+    "note": "nur WiSe"
+  },
+  {
+    "id": "i1206",
+    "code": "B.Inf.1206",
+    "title": "Datenbanken",
+    "credits": {
+      "inf": 5
+    },
+    "group": "db",
+    "offered": null,
+    "note": null
+  },
+  {
+    "id": "i1601a",
+    "code": "B.Inf.1601 · Seminar 1",
+    "title": "Informatik und Allgemeinbildung (Fachdidaktik Informatik)",
+    "credits": {
+      "inf": 3
+    },
+    "group": "sp",
+    "offered": "WiSe",
+    "note": "3 C, nur WiSe"
+  },
+  {
+    "id": "i1601b",
+    "code": "B.Inf.1601 · Seminar 2",
+    "title": "Ausgewählte fachdidaktische Themen (Fachdidaktik Informatik)",
+    "credits": {
+      "did": 3
+    },
+    "group": "sp",
+    "offered": "SoSe",
+    "note": "3 C, nur SoSe"
+  },
+  {
+    "id": "B.Inf.1131",
+    "code": "B.Inf.1131",
+    "title": "Data Science: Grundlagen",
+    "credits": {
+      "inf": 6
+    },
+    "group": "w",
+    "offered": null,
+    "note": null
+  },
+  {
+    "id": "B.Inf.1201",
+    "code": "B.Inf.1201",
+    "title": "Theoretische Informatik",
+    "credits": {
+      "inf": 5
+    },
+    "group": "w",
+    "offered": null,
+    "note": null
+  },
+  {
+    "id": "B.Inf.1202",
+    "code": "B.Inf.1202",
+    "title": "Formale Systeme",
+    "credits": {
+      "inf": 5
+    },
+    "group": "w",
+    "offered": null,
+    "note": null
+  },
+  {
+    "id": "B.Inf.1203",
+    "code": "B.Inf.1203",
+    "title": "Betriebssysteme",
+    "credits": {
+      "inf": 5
+    },
+    "group": "w",
+    "offered": null,
+    "note": null
+  },
+  {
+    "id": "B.Inf.1204",
+    "code": "B.Inf.1204",
+    "title": "Telematik / Computernetzwerke",
+    "credits": {
+      "inf": 5
+    },
+    "group": "w",
+    "offered": null,
+    "note": null
+  },
+  {
+    "id": "B.Inf.1209",
+    "code": "B.Inf.1209",
+    "title": "Softwaretechnik",
+    "credits": {
+      "inf": 5
+    },
+    "group": "w",
+    "offered": null,
+    "note": null
+  },
+  {
+    "id": "B.Inf.1210",
+    "code": "B.Inf.1210",
+    "title": "Computersicherheit und Privatheit",
+    "credits": {
+      "inf": 5
+    },
+    "group": "w",
+    "offered": null,
+    "note": null
+  },
+  {
+    "id": "B.Inf.1211",
+    "code": "B.Inf.1211",
+    "title": "Sensordatenverarbeitung",
+    "credits": {
+      "inf": 5
+    },
+    "group": "w",
+    "offered": null,
+    "note": null
+  },
+  {
+    "id": "B.Inf.1212",
+    "code": "B.Inf.1212",
+    "title": "Technische Informatik",
+    "credits": {
+      "inf": 5
+    },
+    "group": "w",
+    "offered": null,
+    "note": null
+  },
+  {
+    "id": "B.Inf.1214",
+    "code": "B.Inf.1214",
+    "title": "Types and Programming Languages",
+    "credits": {
+      "inf": 8
+    },
+    "group": "w",
+    "offered": null,
+    "note": null
+  },
+  {
+    "id": "B.Inf.1215",
+    "code": "B.Inf.1215",
+    "title": "Compiler Construction",
+    "credits": {
+      "inf": 6
+    },
+    "group": "w",
+    "offered": null,
+    "note": null
+  },
+  {
+    "id": "B.Inf.1216",
+    "code": "B.Inf.1216",
+    "title": "Compiler Lab",
+    "credits": {
+      "inf": 6
+    },
+    "group": "w",
+    "offered": null,
+    "note": null
+  },
+  {
+    "id": "B.Inf.1236",
+    "code": "B.Inf.1236",
+    "title": "Machine Learning",
+    "credits": {
+      "inf": 6
+    },
+    "group": "w",
+    "offered": null,
+    "note": null
+  },
+  {
+    "id": "B.Inf.1802",
+    "code": "B.Inf.1802",
+    "title": "Programmierpraktikum",
+    "credits": {
+      "inf": 6
+    },
+    "group": "w",
+    "offered": null,
+    "note": null
+  },
+  {
+    "id": "B.Inf.1803",
+    "code": "B.Inf.1803",
+    "title": "Fachpraktikum I",
+    "credits": {
+      "inf": 5
+    },
+    "group": "w",
+    "offered": null,
+    "note": null
+  },
+  {
+    "id": "B.Inf.1842",
+    "code": "B.Inf.1842",
+    "title": "Programmieren für Data Scientists: Python",
+    "credits": {
+      "inf": 5
+    },
+    "group": "w",
+    "offered": null,
+    "note": null
+  },
+  {
+    "id": "B.Mat.0842",
+    "code": "B.Mat.0842",
+    "title": "Mathematik für Informationswissenschaften II",
+    "credits": {
+      "inf": 9
+    },
+    "group": "w",
+    "offered": null,
+    "note": null
+  },
+  {
+    "id": "SK.Inf.1801",
+    "code": "SK.Inf.1801",
+    "title": "Funktionale Programmierung",
+    "credits": {
+      "inf": 5
+    },
+    "group": "w",
+    "offered": null,
+    "note": null
+  },
+  {
+    "id": "SK.Inf.1803",
+    "code": "SK.Inf.1803",
+    "title": "Computer Science for Environmental Sustainability",
+    "credits": {
+      "inf": 5
+    },
+    "group": "w",
+    "offered": null,
+    "note": null
+  },
+  {
+    "id": "SK.Inf.1804",
+    "code": "SK.Inf.1804",
+    "title": "KI Methoden im akademischen Alltag",
+    "credits": {
+      "inf": 5
+    },
+    "group": "w",
+    "offered": null,
+    "note": null
+  },
+  {
+    "id": "SK.Inf.1806",
+    "code": "SK.Inf.1806",
+    "title": "Introduction into Web Development",
+    "credits": {
+      "inf": 6
+    },
+    "group": "w",
+    "offered": null,
+    "note": null
+  },
+  {
+    "id": "SK.Inf.1807",
+    "code": "SK.Inf.1807",
+    "title": "Projektarbeit: Erweiterung",
+    "credits": {
+      "inf": 3
+    },
+    "group": "w",
+    "offered": null,
+    "note": null
+  },
+  {
+    "id": "b1",
+    "code": "B.BW.010 · Teil 1",
+    "title": "Strukturen, Entwicklungen und Herausforderungen des Schulsystems",
+    "credits": {
+      "bw": 3
+    },
+    "group": "pf",
+    "offered": null,
+    "note": "Klausur"
+  },
+  {
+    "id": "b2",
+    "code": "B.BW.010 · Teil 2",
+    "title": "Einführung in die Pädagogische Psychologie: Lehren und Lernen",
+    "credits": {
+      "bw": 3
+    },
+    "group": "pf",
+    "offered": null,
+    "note": "Klausur, Vorlesung im WiSe"
+  },
+  {
+    "id": "b20",
+    "code": "B.BW.020",
+    "title": "Handlungsfeld Schule und Allgemeines Schulpraktikum (ASP)",
+    "credits": {
+      "bw": 9
+    },
+    "group": "pf",
+    "offered": null,
+    "note": null
+  },
+  {
+    "id": "b30",
+    "code": "B.BW.030",
+    "title": "Praktikum in einem Betrieb, einer sozialen Einrichtung oder einem Sportverein (BSVP)",
+    "credits": {
+      "bw": 5
+    },
+    "group": "pf",
+    "offered": null,
+    "note": null
+  },
+  {
+    "id": "o713",
+    "code": "B.Phy.713",
+    "title": "Praxismodul an der Schule: Einführung in das Unterrichten",
+    "credits": {
+      "opt": 4
+    },
+    "group": "o",
+    "offered": null,
+    "note": "max. 6 Plätze"
+  },
+  {
+    "id": "o1831",
+    "code": "B.Inf.1831",
+    "title": "Ethische, gesellschaftliche und rechtliche Grundlagen für Data Science",
+    "credits": {
+      "opt": 3
+    },
+    "group": "o",
+    "offered": null,
+    "note": null
+  },
+  {
+    "id": "olap",
+    "code": "LA-PluS",
+    "title": "LA-PluS: Praxisnetzwerk MINT-Fachdidaktiken",
+    "credits": {
+      "opt": 3
+    },
+    "group": "o",
+    "offered": null,
+    "note": "Zusatzangebot Lehramt PluS"
+  },
+  {
+    "id": "th",
+    "code": "Bachelorarbeit",
+    "title": "Fachwissenschaftliche Bachelorarbeit (Physik)",
+    "credits": {
+      "th": 12
+    },
+    "group": "pf",
+    "offered": null,
+    "note": "ohne Modulnummer"
+  }
+]

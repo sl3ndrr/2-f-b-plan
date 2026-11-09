@@ -1,0 +1,23 @@
+# Vincents Plan · Physik × Informatik
+
+Interaktiver Fortschrittstracker für den Göttinger Zwei-Fächer-Bachelor mit Lehramtsoption. Die Anwendung zeigt Vincents 180-C-Plan oder alle erfassten Moduloptionen und speichert Haken lokal im Browser.
+
+## Lokal starten
+
+Node.js ab 22.13 installieren, danach:
+
+```sh
+npm ci
+npm run dev
+npm run check
+```
+
+Der Entwicklungsserver meldet die Adresse. `npm run build` erzeugt die Pages-Version in `dist/`. Mit `npm run build:single` entsteht `dist-single/index.html`, die sich direkt und offline öffnen lässt. Browser behandeln lokal geöffnete Dateien und die Pages-Adresse als separate Speicherbereiche.
+
+## GitHub Pages
+
+In den Repository-Einstellungen unter **Pages → Build and deployment → Source** einmalig **GitHub Actions** auswählen. Der Workflow prüft Branches und Pull Requests. Auf `main` veröffentlicht er nach erfolgreicher Prüfung den Build unter [sl3ndrr.github.io/2-f-b-plan/](https://sl3ndrr.github.io/2-f-b-plan/). Die Offline-Datei steht im Workflow als Download bereit.
+
+## Daten pflegen
+
+Module, Kategorien, Gruppen, Plan-Auswahl und Quellenhinweis liegen in `data/`. [Datenmodell](docs/data-model.md) und [Rezepte](docs/recipes.md) erläutern die Felder. Die [Architektur](docs/architecture.md) zeigt den Weg von den JSON-Dateien zur Anzeige. Bei fachlichen Unklarheiten siehe [offene Fragen](docs/open-questions.md).

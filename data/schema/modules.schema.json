@@ -1,0 +1,52 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "array",
+  "description": "Module in Anzeigereihenfolge",
+  "items": {
+    "type": "object",
+    "description": "Ein auswählbarer Datensatz oder ein Modulteil",
+    "properties": {
+      "id": {
+        "type": "string",
+        "minLength": 1,
+        "description": "Unveränderliche ID in localStorage und im Plan"
+      },
+      "code": {
+        "type": "string",
+        "minLength": 1,
+        "description": "Angezeigter Modulcode oder Name ohne Modulnummer"
+      },
+      "title": {
+        "type": "string",
+        "minLength": 1,
+        "description": "Unveränderter deutscher oder englischer Modultitel"
+      },
+      "credits": {
+        "type": "object",
+        "description": "Credit-Anteile nach Kategorie. Die Summe ist der Modulgesamtwert.",
+        "minProperties": 1,
+        "additionalProperties": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Credit-Anteil in C"
+        }
+      },
+      "group": {
+        "type": "string",
+        "minLength": 1,
+        "description": "ID einer Modulgruppe"
+      },
+      "offered": {
+        "description": "Explizite Angebotsangabe in der bestehenden Notiz, sonst null",
+        "enum": ["WiSe", "SoSe", "both", null]
+      },
+      "note": {
+        "type": ["string", "null"],
+        "description": "Unveränderter angezeigter Hinweis, sonst null"
+      }
+    },
+    "required": ["id", "code", "title", "credits", "group", "offered", "note"],
+    "additionalProperties": false
+  },
+  "minItems": 1
+}

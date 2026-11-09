@@ -1,0 +1,30 @@
+{
+  "name": "2-f-b-plan",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.13"
+  },
+  "scripts": {
+    "dev": "vite",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint . && prettier --check .",
+    "validate:data": "node --experimental-strip-types scripts/validate-data.ts",
+    "test": "node --test tests/legacy.test.mjs && vitest run tests/domain",
+    "build": "vite build",
+    "build:single": "vite build --mode single && node --experimental-strip-types scripts/inline-build.ts",
+    "check": "npm run typecheck && npm run lint && npm run validate:data && npm test && npm run build && npm run build:single"
+  },
+  "devDependencies": {
+    "@eslint/js": "9.39.4",
+    "@types/node": "22.19.19",
+    "ajv": "8.20.0",
+    "eslint": "9.39.4",
+    "prettier": "3.9.6",
+    "typescript": "5.9.3",
+    "typescript-eslint": "8.59.3",
+    "vite": "8.0.13",
+    "vitest": "4.1.12"
+  }
+}
