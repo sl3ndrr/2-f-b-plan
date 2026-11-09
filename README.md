@@ -23,3 +23,14 @@ In den Repository-Einstellungen unter **Pages → Build and deployment → Sourc
 Module, Kategorien, Gruppen, Plan-Auswahl und Quellenhinweis liegen in `data/`. [Datenmodell](docs/data-model.md) und [Rezepte](docs/recipes.md) erläutern die Felder. Die [Architektur](docs/architecture.md) zeigt den Weg von den JSON-Dateien zur Anzeige. Bei fachlichen Unklarheiten siehe [offene Fragen](docs/open-questions.md).
 
 Die Toolbar bietet die Animationsstufen **ruhig**, **normal** und **aus**. Der Browser speichert die Wahl unter `zfb2_motion`. Bei systemweit reduzierter Bewegung gilt **aus**, bis die Systemeinstellung geändert wird.
+
+## Browserprüfung und Screenshots
+
+```sh
+npm run build
+npm run build:single
+npx playwright install chromium
+npm run screenshots
+```
+
+Das Skript erzeugt je eine helle und dunkle Ansicht für 390×844, 1280×800, 1920×1080, 2560×1440, 3440×1440 und 3840×2160 in `docs/screenshots/`. Es prüft außerdem horizontales Überlaufen, Spaltenpositionen und den Start der Einzeldatei ohne Netz. Der CI-Lauf stellt die Screenshots als ZIP bereit.

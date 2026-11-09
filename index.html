@@ -33,20 +33,24 @@
           <button class="btn" id="bTheme" aria-label="Hell/Dunkel wechseln">Hell/Dunkel</button>
         </div>
       </header>
-      <div id="dyn"></div>
-      <div class="bar2">
-        <input
-          id="q"
-          type="search"
-          placeholder="grep: Modul, Code, Stichwort"
-          aria-label="Modul suchen"
-        />
-        <div class="seg" id="seg">
-          <button data-st="all">Alle</button><button data-st="open">Offen</button
-          ><button data-st="done">Absolviert</button>
-        </div>
-      </div>
-      <div id="list"></div>
+      <main class="dashboard">
+        <aside id="dyn" class="dashboard-summary" aria-label="Studienübersicht"></aside>
+        <section class="module-panel" aria-label="Modulliste">
+          <div class="bar2">
+            <input
+              id="q"
+              type="search"
+              placeholder="grep: Modul, Code, Stichwort"
+              aria-label="Modul suchen"
+            />
+            <div class="seg" id="seg">
+              <button data-st="all">Alle</button><button data-st="open">Offen</button
+              ><button data-st="done">Absolviert</button>
+            </div>
+          </div>
+          <div id="list" class="module-grid" tabindex="-1"></div>
+        </section>
+      </main>
       <footer></footer>
     </div>
     <div id="toast" role="status"></div>

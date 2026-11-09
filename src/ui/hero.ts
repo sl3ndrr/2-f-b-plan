@@ -13,8 +13,9 @@ export function createHero(data: Data, parent: HTMLElement) {
   const target = element('small');
   big.append(count, target);
   const status = element('div', 'hr');
-  status.setAttribute('aria-live', 'polite');
-  status.setAttribute('aria-atomic', 'true');
+  const live = element('span', 'sr-only');
+  live.setAttribute('role', 'status');
+  header.append(live);
   header.append(big, status);
 
   const wave = createOscilloscope();
@@ -40,10 +41,11 @@ export function createHero(data: Data, parent: HTMLElement) {
       count.textContent = String(total.capped);
       target.textContent = `/ ${total.required} C`;
       status.replaceChildren(
-        `${total.capped} / ${total.required} C · ${total.percent}% kompiliert`,
+        `${total.percent}% kompiliert`,
         element('br'),
         `noch ${total.remaining} C offen`,
       );
+      live.textContent = `Gesamt: ${total.capped} / ${total.required} C, noch ${total.remaining} C offen`;
       lastTotal = total.capped;
     }
     for (const { id, segment, value } of parts) {

@@ -1,15 +1,15 @@
 #toast {
   position: fixed;
   left: 50%;
-  bottom: calc(20px + env(safe-area-inset-bottom, 0px));
-  transform: translate(-50%, 30px);
+  bottom: calc(1.25rem + env(safe-area-inset-bottom, 0rem));
+  transform: translate(-50%, 1.875rem);
   opacity: 0;
   background: var(--tx);
   color: var(--bg);
-  padding: 10px 16px;
-  border-radius: 6px;
+  padding: 0.625rem 1rem;
+  border-radius: 0.375rem;
   font:
-    600 13px 'JetBrains Mono',
+    600 0.8125rem 'JetBrains Mono',
     monospace;
   pointer-events: none;
   z-index: 9;
@@ -22,8 +22,8 @@
   position: fixed;
   left: 50%;
   top: 40%;
-  width: 8px;
-  height: 12px;
+  width: 0.5rem;
+  height: 0.75rem;
   background: var(--c);
   z-index: 8;
   pointer-events: none;

@@ -14,8 +14,8 @@
   --th: #be123c;
   color-scheme: light;
   box-sizing: border-box;
-  padding-top: env(safe-area-inset-top, 0px);
-  padding-bottom: env(safe-area-inset-bottom, 0px);
+  padding-top: env(safe-area-inset-top, 0rem);
+  padding-bottom: env(safe-area-inset-bottom, 0rem);
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme='light']) {
@@ -62,4 +62,10 @@
   src: url('../assets/fonts/jetbrains-mono.woff2') format('woff2');
   font-weight: 400 800;
   font-display: swap;
+}
+
+:root {
+  font-size: clamp(100%, 93% + 0.12vw, 112.5%);
+  --page-wide: 133.333rem;
+  --dashboard-gap: clamp(1rem, 1.25vw, 1.75rem);
 }

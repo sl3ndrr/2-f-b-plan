@@ -49,6 +49,8 @@ export function createModuleList(data: Data, root: HTMLElement, toggle: (id: str
       if (!matches.length || (state.filter.category && state.filter.category !== category.id))
         return [];
       const section = color(element('section', 'sec'), category.colorToken);
+      section.dataset.category = category.id;
+      section.dataset.band = category.band;
       const header = element('div', 'sh');
       header.style.setProperty('--i', String(rows.length));
       const title = element('h3', '', `${category.symbol} ${category.name}`);
@@ -77,9 +79,13 @@ export function createModuleList(data: Data, root: HTMLElement, toggle: (id: str
       }
       return section;
     });
+    const subjects = sections.filter((section) => section.dataset.band === 'subjects');
+    const professional = sections.filter((section) => section.dataset.band !== 'subjects');
+    const group = element('div', 'module-professional');
+    group.append(...professional);
     root.replaceChildren(
       ...(sections.length
-        ? sections
+        ? [...subjects, ...(professional.length ? [group] : [])]
         : [element('div', 'empty', 'Kein Treffer. Ändere Suche oder Filter.')]),
     );
     root.classList.toggle('enter', animate);
